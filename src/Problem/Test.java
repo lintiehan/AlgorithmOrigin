@@ -1,3 +1,4 @@
+package Problem;
 public class Test{  
     public void findLCS(String s1,String s2){  
         int len1 = s1.length();  
