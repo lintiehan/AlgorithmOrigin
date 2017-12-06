@@ -2,7 +2,7 @@ package Problem;
 
 public class Fibo {
 	public static void main(String[] args) {
-		for(int h=1;h<=25;h++)
+		for(int h=1;h<=30;h++)
 		{
 			 	int r=2*getResult(h+1)-1;
 			 
