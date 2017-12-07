@@ -1,11 +1,11 @@
 package Problem;
-
+//组合问题
 public class Combination {
 	public static void main(String[] args) {
 		String s="abc";
-		getResult(s);
+		getResultByBit(s);
 	}
-	public static void getResult(String str)
+	public static void getResultByBit(String str)
 	{
 		int len=str.length();
 		for(int i=0;i<(1<<len);i++)

@@ -58,7 +58,6 @@ public class ShuDu {
     			}
     		}
     	}else {
- 
     		backTrace(i, j+1);
     	}
     }

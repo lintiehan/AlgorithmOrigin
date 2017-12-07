@@ -5,9 +5,9 @@ import java.util.Scanner;
 public class LongestPerf {
 	public static void main(String[] args) {
 		Scanner scanner=new Scanner(System.in);
-		String [] strings=new String[3];
+		String [] strings=new String[2];
 		
-		for(int i=0;i<3;i++)
+		for(int i=0;i<2;i++)
 		{
 			String temp=scanner.nextLine();
 			strings[i]=temp;

@@ -11,6 +11,7 @@ package Problem;
 public class TopK {
 	  
 	public static void main(String[] args) {
+		System.out.println(-15>>2);
 		 // 源数据  
        int[] data = {56,275,12,6,45,478,41,1236,456,12,546,45};  
     // 获取Top5  
