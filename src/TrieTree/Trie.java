@@ -4,8 +4,12 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.security.acl.LastOwnerException;
+import java.util.ArrayList;
+import java.util.LinkedList;
 
 import javax.naming.directory.SearchControls;
+ 
 
 public class Trie {
 	private Node root;
@@ -51,7 +55,7 @@ public class Trie {
 	        * This means that a string exists, but make sure its
 	        * a word by checking its 'isEnd' flag
 	        */
-		if(current.isEnd==false)
+		if(current.isEnd==true)
 			return true;
 		else
 			return false;
@@ -77,13 +81,35 @@ public class Trie {
 		}
 		current.isEnd=false;
 	}
-	
+	public static void print(Node root) {
+		ArrayList<ArrayList<Character>> res = new ArrayList<ArrayList<Character>>();
+		ArrayList<Character> temp = new ArrayList<Character>();
+		LinkedList<Node> queue = new LinkedList<Node>();
+
+		queue.offer(root);
+		Node node = null;	 
+		Node tem=null;
+		while (!queue.isEmpty()) {
+			node = queue.poll(); 
+			for (Node node2 : node.childList) {
+				System.out.print(node2.content+" ");				
+				if(node2.childList!=null)
+				{						
+					queue.offer(node2); 
+				}
+			}
+			 
+			 
+			
+		}
+	}
 	 public static void main(String[] args) {
 	        Trie trie = new Trie();
 	        trie.insert("ball");
 	        trie.insert("balls");
 	        trie.insert("sense");
-
+	        trie.print(trie.root);
+	        System.out.println();
 	        // testing deletion
 	        System.out.println(trie.search("balls"));
 	        System.out.println(trie.search("ba"));

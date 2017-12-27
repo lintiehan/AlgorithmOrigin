@@ -24,13 +24,13 @@ public class Test {
 	        br.close();
 	        fr.close();
 	        
-	        HashSet<Integer> hashSet=trie.searchTrieNode("the");
+	        HashSet<Integer> hashSet=trie.searchTrieNode("go");
 	        Iterator<Integer>iterator=hashSet.iterator();
 	       while(iterator.hasNext())
 	       {
 	    	   System.out.println("-->"+iterator.next());
 	       }
-	        System.out.println("出现次数为："+trie.wordCount( "the")); 
+	        System.out.println("出现次数为："+trie.wordCount( "go")); 
 	 
 	 
 	 }
