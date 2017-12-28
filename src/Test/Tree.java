@@ -100,15 +100,12 @@ public class Tree {
 	}
 
 	public static void dfs(TreeNode node, int h) throws CloneNotSupportedException {
- 
+		 
 		if (node == null || SQ.size() > PROCESSOR) {
 			System.out.println("空");
 			return;
 		}
-		if (treeHeight(node) == 1) {
-			System.out.println("高度不足");
-			return;
-		}
+		 
 		if (PROCESSOR == SQ.size() && checkNums(SQ) == true) {
 			System.out.println("完成匹配");
 			TreeNode node1 = SQ.pop();
@@ -133,11 +130,10 @@ public class Tree {
 			return;
 		}
 		
-		for (int i = h; i >= 2; i--) {
-
+		for (int i = h; i >= 2; i--) { 
 			if (SQ.size() < PROCESSOR) {
-
-				TreeNode temp = findTreeNode(node, i);
+			 
+				TreeNode temp = fromBottom(node, i);
 				System.out.println("----size:" + SQ.size() + " i的值为" + i);
 
 				node = removeNode(node, temp);
@@ -152,10 +148,10 @@ public class Tree {
 				node = reverseNode(node, SQ.pop());
 
 			}
-		}
+		} 
 	}
 
-	private static TreeNode findTreeNode(TreeNode p, int h) {
+	private static TreeNode findTreeNode(TreeNode p, int h) { 
 		/*
 		 * if (treeHeight(p) == 1) { System.out.println("高度不足"); return null; }
 		 */
@@ -199,10 +195,11 @@ public class Tree {
 
 			SQtemp.push(temp);
 			System.out.println("-----");
+			 
 		}
 		Iterator<TreeNode> iterator1 = SQtemp.iterator();
 		while (iterator1.hasNext()) {
-			SQ.push(SQtemp.pop());
+			SQ.push(SQtemp.pop()); 
 		}
 
 		if (numSum == NUM) {
@@ -252,9 +249,9 @@ public class Tree {
 		// printTree(root);
 	}
 
-	private static TreeNode reverseNode(TreeNode node, TreeNode temp) {
+	private static TreeNode reverseNode(TreeNode node, TreeNode temp) { 
 		if (node != null) {
-			if (temp.parentChild == node) {
+			if (temp.parentChild == node) { 
 				if (node.rightChild == null) {
 					System.out.println("右孩子恢复");
 					node.rightChild = temp;
@@ -276,7 +273,7 @@ public class Tree {
 		return node;
 	}
 
-	private static TreeNode removeNode(TreeNode node, TreeNode temp) {
+	private static TreeNode removeNode(TreeNode node, TreeNode temp) { 
 
 		if (node != null) {
 			if (node.leftChild == temp) {
@@ -308,12 +305,13 @@ public class Tree {
 				if (node == root) {
 
 					SQ.push(node);
-					node = null;
+					return node;
 				} else if (node.parentChild != null && node.parentChild.leftChild == node) {
 					SQ.push(node);
 					node.parentChild.leftChild = null;
 				} else if (node.parentChild != null && node.parentChild.rightChild == node) {
 					SQ.push(node);
+					printTree(node);
 					node.parentChild.rightChild = null;
 				}
 
@@ -324,7 +322,7 @@ public class Tree {
 		return node;
 	}
 
-	public static int treeHeight(TreeNode subTree) {
+	public static int treeHeight(TreeNode subTree) { 
 		if (subTree == null) {
 			return 0;
 		} else {
