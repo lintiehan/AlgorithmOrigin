@@ -108,7 +108,7 @@ public class StandardDeviation {
 		}
 
 		// 测试数据计算
-		standardDeviation = Math.sqrt(sn / arr.length);
+		standardDeviation = s.getRunningVariance(); 
 		// System.out.println(standardDeviation);
 		return standardDeviation;
 	}
@@ -116,7 +116,7 @@ public class StandardDeviation {
 	public static void main(String[] args) {
 		StandardDeviation s = new StandardDeviation();
 
-		int[] arr = { 2, 4, 4, 5, 5, 6, 2, 3, 3, 6 };
+		int[] arr = { 3,3,3,3};
 
 		double temp = calc(s, arr);
 		System.out.println(temp);

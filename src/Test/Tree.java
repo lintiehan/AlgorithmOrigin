@@ -11,7 +11,7 @@ import javax.security.auth.kerberos.KerberosKey;
 public class Tree {
 	private static final int PROCESSOR = 4;
 	public static TreeNode[] result = new TreeNode[PROCESSOR];
-	static int standarDif = 100000;
+	static double standarDif = 100000;
 	static int NUM = 0;
 	static LinkedList<TreeNode> SQ1 = new LinkedList<TreeNode>();
 	static Stack<TreeNode> SQ = new Stack<TreeNode>();
@@ -86,7 +86,7 @@ public class Tree {
 		printTree(tree.root);
 	}
 
-	public static void main(String[] args) throws CloneNotSupportedException {
+	public static void main (String[] args) throws CloneNotSupportedException {
 		Tree tree = new Tree();
 		printTree(tree.root);
 		NUM = getSumNode(tree.root);
@@ -96,7 +96,7 @@ public class Tree {
 		if (maxheight > treeHeight(tree.root)) {
 			dfs(tree.root, treeHeight(tree.root));
 		} else {
-			dfs(tree.root, 3);
+			dfs(tree.root, maxheight);
 		}
 
 		Iterator<TreeNode> iterator = SQ.iterator();
@@ -104,7 +104,7 @@ public class Tree {
 			printTree(SQ.pop());
 			System.out.println("-----");
 		}
-
+/*
 		System.out.println("========");
 		printTree(result[0]);
 		System.out.println("----");
@@ -112,7 +112,7 @@ public class Tree {
 		System.out.println("----");
 		printTree(result[2]);
 		System.out.println("----");
-		printTree(result[3]);
+		printTree(result[3]);*/
 
 		// printTree(result[3]);
 	}
@@ -120,7 +120,6 @@ public class Tree {
 	public static void dfs(TreeNode node, int h) throws CloneNotSupportedException {
 		System.out.println("进入dfs");
 		if (SQ.size() > PROCESSOR || treeHeight(node) == 1) {
-
 			System.out.println("条件不予许");
 			return;
 		}
@@ -136,16 +135,23 @@ public class Tree {
 			 * SQ.pop(); TreeNode node8 = SQ.pop();
 			 */
 			int tempheight = treeHeight(node1) + treeHeight(node2) + treeHeight(node3) + treeHeight(node4);
-			if (tempheight==12&&(getSumNode(node1) + getSumNode(node2) + getSumNode(node3) + getSumNode(node4)) == NUM) {
-				// maxheight = tempheight;
+			int nums[]=new int[] {treeHeight(node1),treeHeight(node2),treeHeight(node3),treeHeight(node4)};
+			StandardDeviation s = new StandardDeviation();
+
+			int[] arr = { 2, 4, 4, 5, 5, 6, 2, 3, 3, 6 };
+
+			double temp = new StandardDeviation().calc(s, nums);
+			//System.out.println(temp);
+			if (temp <standarDif
+					&& (getSumNode(node1) + getSumNode(node2) + getSumNode(node3) + getSumNode(node4)) == NUM) {
+				standarDif = temp;
 				result[0] = (TreeNode) node1.clone();
 				result[1] = (TreeNode) node2.clone();
 				result[2] = (TreeNode) node3.clone();
 				result[3] = (TreeNode) node4.clone();
-			/*	result[0] = node1;
-				result[1] = node2;
-				result[2] = node3;
-				result[3] = node4;*/
+				/*
+				 * result[0] = node1; result[1] = node2; result[2] = node3; result[3] = node4;
+				 */
 				System.err.println("后配选择");
 				printTree(node1);
 				System.out.println("----");
@@ -180,6 +186,7 @@ public class Tree {
 			if (SQ.size() < PROCESSOR) {
 
 				TreeNode temp = findTreeNode(node, i);
+				SQ.push(temp);
 				System.out.println("----size:" + SQ.size() + " i的值为" + i);
 
 				node = removeNode(node, temp);
@@ -214,10 +221,10 @@ public class Tree {
 
 			while (p != null && (p.rightChild == null || p.rightChild == q)) {
 				if (treeHeight(p) == h) {
-					System.err.println("该节点被push进来  begin");
+					System.err.println("该节点符合条件");
 					printTree(p);
-					System.err.println("该节点被push进来 end");
-					SQ.push(p);
+					System.err.println("该节点符合条件");
+
 					temp = p;
 					flag = false;
 					break;
@@ -272,57 +279,86 @@ public class Tree {
 	private static void teseNode(TreeNode node) {
 
 		TreeNode temp = findTreeNode(node, 3);
+		SQ.push(temp);
 		printTree(temp);
 
-		removeNode(node, temp);
+		node = removeNode(node, temp);
 
-		System.out.println("-----");
-		printTree(root);
-		System.out.println("&&&11");
+		System.out.println("当前所有节点-----start");
 		printTree(node);
-		System.out.println("-----");
+		System.out.println("当前所有节点-----end");
 
 		TreeNode temp1 = findTreeNode(node, 3);
+		SQ.push(temp1);
 		printTree(temp1);
 
 		node = removeNode(node, temp1);
+		System.out.println("当前所有节点-----start");
 		printTree(node);
-		System.out.println("&&&22");
+		System.out.println("当前所有节点-----end");
+
+		TreeNode temp2 = findTreeNode(node, 3);
+		printTree(temp2);
+		SQ.push(temp2);
+
+		node = removeNode(node, temp2);
+		System.out.println("当前所有节点-----start");
+		printTree(node);
+		System.out.println("当前所有节点-----end");
 
 		TreeNode temp3 = findTreeNode(node, 3);
 		printTree(temp3);
-
+		SQ.push(temp3);
 		node = removeNode(node, temp3);
 		printTree(node);
-		System.out.println("&&&333");
 
-		TreeNode temp4 = findTreeNode(node, 3);
-		printTree(temp4);
-
-		node = removeNode(node, temp4);
-		printTree(node);
-		System.out.println("SQ size个数" + SQ.size());
+		System.out.println("栈大小" + SQ.size());
 		System.out.println("开始恢复");
-		node = reverseNode(node, SQ.pop());
-		System.out.println("SQ size个数" + SQ.size());
+		node = preorderTraversal(node, SQ.pop());
 		printTree(node);
-		System.out.println("&&&");
 
-		System.out.println("#####");
-		node = reverseNode(node, SQ.pop());
+		node = preorderTraversal(node, SQ.pop());
 		printTree(node);
-		System.out.println("#####");
-		System.out.println("#####");
-		node = reverseNode(node, SQ.pop());
+		node = preorderTraversal(node, SQ.pop());
 		printTree(node);
-		System.out.println("#####");
-		System.out.println("#####");
-		node = reverseNode(node, SQ.pop());
+		node = preorderTraversal(node, SQ.pop());
 		printTree(node);
-		System.out.println("#####");
-
 		// System.out.println("&&&");
 		// printTree(root);
+	}
+
+	public static TreeNode preorderTraversal(TreeNode node, TreeNode temp) {
+
+		Stack<TreeNode> treeStack = new Stack<>();
+		if (node == null) // 如果为空树则返回
+		{
+			System.out.println("根节点恢复");
+			node = temp;
+		} else {
+			treeStack.push(node);
+			while (!treeStack.isEmpty()) {
+				TreeNode tempNode = treeStack.pop();
+				if (tempNode != null) {
+					if (temp.parentChild == tempNode) {
+						if (tempNode.rightChild == null) {
+							System.out.println("右孩子恢复");
+							tempNode.rightChild = temp;
+							break;
+						} else if (tempNode.leftChild == null) {
+							System.out.println("左孩子恢复");
+							tempNode.leftChild = temp;
+							break;
+						}else {
+							System.out.println("什么都没有");
+						}
+					}
+					treeStack.push(tempNode.leftChild); // 入栈右孩子
+					treeStack.push(tempNode.rightChild);// 入栈左孩子
+				}
+			}
+		}
+
+		return node;
 	}
 
 	private static TreeNode reverseNode(TreeNode node, TreeNode temp) {
@@ -344,7 +380,7 @@ public class Tree {
 		} else if (node == null) {
 			System.out.println("根节点恢复");
 			node = temp;
-		 
+
 		}
 		return node;
 	}
