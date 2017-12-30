@@ -90,7 +90,8 @@ public class StandardDeviation {
 		recomputerstandard_Deviation();
 	}
 
-	public static double calc(StandardDeviation s, int[] arr) {
+	public static double calc( int[] arr) {
+		StandardDeviation s=new StandardDeviation();
 		int sum = 0, average = 0;
 		double sn = 0.0;
 		double standardDeviation = 0.0;
@@ -100,8 +101,8 @@ public class StandardDeviation {
 			s.addSample(arr[i]);
 		}
 
-		average = sum / 10;
-		System.out.println("average value is = " + average);
+		average = sum / arr.length;
+		//System.out.println("average value is = " + average);
 
 		for (int j = 0, len = arr.length; j < len; j++) {
 			sn = sn + Math.pow((arr[j] - average), 2);
@@ -116,9 +117,9 @@ public class StandardDeviation {
 	public static void main(String[] args) {
 		StandardDeviation s = new StandardDeviation();
 
-		int[] arr = { 3,3,3,3};
+		int[] arr = { 1,3,3,3};
 
-		double temp = calc(s, arr);
+		double temp = StandardDeviation.calc(  arr);
 		System.out.println(temp);
 		// 通过函数计算
 		double result = s.getRunningVariance();
