@@ -1,4 +1,4 @@
-package Version2;
+package Version2 ;
 
 public class TreeNode implements Cloneable {
 	boolean isVisted = false;
@@ -6,6 +6,7 @@ public class TreeNode implements Cloneable {
 	TreeNode leftChild = null;
 	TreeNode centerChild = null;
 	TreeNode rightChild = null;
+	int position=0;
 	int key = 0;
 
 	public TreeNode() {

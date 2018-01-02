@@ -1,9 +1,7 @@
 package Test;
 
 import java.io.File;
-
-import jxl.Workbook;
-import jxl.write.WritableWorkbook;
+ 
 
 public class Test_Algorithm1 {
 	final static int num = 100;
