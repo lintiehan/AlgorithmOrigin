@@ -1,122 +1,124 @@
 package TrieTree;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.security.acl.LastOwnerException;
-import java.util.ArrayList;
-import java.util.LinkedList;
-
-import javax.naming.directory.SearchControls;
- 
+import java.awt.MenuComponent;
+import java.util.HashMap;
+import java.util.HashSet;
 
 public class Trie {
 	private Node root;
-	public Trie()
-	{
-		root=new Node(' ');
+
+	public Trie() {
+		root = new Node();
 	}
-	
-	
-	public void insert(String word)
-	{
-		if(search(word)==true)
-			return;
-		Node current=root;
-		for(int i=0;i<word.length();i++)
-		{
-			Node child=current.subNode(word.charAt(i));
-			if(child!=null)
-			{
-				current=child;
-			}else {
-				current.childList.add(new Node(word.charAt(i)));
-				current=current.subNode(word.charAt(i));
+	  /** 
+     * 插入字串，用循环代替迭代实现 
+     * @param root 
+     * @param words 
+     */  
+   
+	public void inserNode(String word) {
+		inserNode(this.root, word);
+	}
+
+	public void inserNode(Node root, String word) {
+		word = word.toLowerCase();
+		char wd[] = word.toCharArray();
+		for (int i = 0; i < wd.length; i++) {
+			int index = wd[i] - 'a';// 下标
+			if (root.childs[index] != null) {
+				// 已经存在，该子节点次数+1
+				root.childs[index].prefix_num++;
+			} else {
+				root.childs[index] = new Node();
+				root.childs[index].prefix_num++;
 			}
-			current.count++;
-		}
-		// Set isEnd to indicate end of the word
-        current.isEnd = true;
-	}
 
-	//在树中查找 如果已存在则返回true
-	private boolean search(String word) {
-		Node current=root;
-		
-		for(int i=0;i<word.length();i++)
-		{
-			if(current.subNode(word.charAt(i))==null)
-				return false;
-			else
-				current=current.subNode(word.charAt(i));
-		}
-		   /*
-	        * This means that a string exists, but make sure its
-	        * a word by checking its 'isEnd' flag
-	        */
-		if(current.isEnd==true)
-			return true;
-		else
-			return false;
-	}
-
-	public void deleteWord(String word)
-	{
-		if(search(word)==false)
-			return;
-		
-		Node current=root;
-		for(char c:word.toCharArray())
-		{
-			Node child=current.subNode(c);
-			if(child.count==1)
-			{
-				current.childList.remove(child);
-				return;
-			}else {
-				child.count--;
-				current=child;
+			// 如果到了字符串最后一个字符，标记结束
+			if (i == wd.length - 1) {
+				root.childs[index].isLeaf = true;
+				root.childs[index].count++;
 			}
+			root = root.childs[index];
 		}
-		current.isEnd=false;
 	}
-	public static void print(Node root) {
-		ArrayList<ArrayList<Character>> res = new ArrayList<ArrayList<Character>>();
-		ArrayList<Character> temp = new ArrayList<Character>();
-		LinkedList<Node> queue = new LinkedList<Node>();
+	 /** 
+     * 遍历Trie树，查找所有的words以及出现次数 
+     * @return HashMap<String, Integer> map 
+     */  
+	public HashMap<String, Integer>getAllWords()
+	{
+		return preTraversal(this.root,"");
+	}
 
-		queue.offer(root);
-		Node node = null;	 
-		Node tem=null;
-		while (!queue.isEmpty()) {
-			node = queue.poll(); 
-			for (Node node2 : node.childList) {
-				System.out.print(node2.content+" ");				
-				if(node2.childList!=null)
-				{						
-					queue.offer(node2); 
+	private HashMap<String, Integer> preTraversal(Node root, String prefixs) {
+		HashMap<String, Integer>map=new HashMap<String,Integer>();
+		if(root!=null)
+		{
+			if(root.isLeaf==true)
+			{
+				//当前为一个单词
+				map.put(prefixs, root.count);
+			}
+			for(int i=0;i<root.childs.length;i++)
+			{
+				if(root.childs[i]!=null)
+				{
+					char temp=(char) (i+'a');
+					//递归调用前序遍历
+					String tempStr=prefixs+temp;
+					map.putAll(preTraversal(root.childs[i], tempStr)); 
 				}
 			}
-			 
-			 
-			
 		}
+		return map;
 	}
-	 public static void main(String[] args) {
-	        Trie trie = new Trie();
-	        trie.insert("ball");
-	        trie.insert("balls");
-	        trie.insert("sense");
-	        trie.print(trie.root);
-	        System.out.println();
-	        // testing deletion
-	        System.out.println(trie.search("balls"));
-	        System.out.println(trie.search("ba"));
-	        trie.deleteWord("balls");
-	        System.out.println(trie.search("balls"));
-	        System.out.println(trie.search("ball"));
-	    }
- 
-}
+	/** 
+     * 查询某字串是否在字典树中 
+     * @param word 
+     * @return true if exists ,otherwise  false  
+     */  
+	boolean isExist(String word)
+	{
+		return searchWord(this.root,word);
+	}
 
+	private boolean searchWord(Node root, String word) {
+		char [] chs=word.toLowerCase().toCharArray();
+		for(int i=0;i<chs.length;i++)
+		{
+			int index=chs[i]-'a';
+			if(root.childs[index]==null)
+			{
+				return false;
+			}
+			root=root.childs[index];
+		}
+		// TODO Auto-generated method stub
+		return true;
+	}
+	
+	 /** 
+     * 得到以某字串为前缀的字串集，包括字串本身！ 类似单词输入法的联想功能 
+     * @param prefix 字串前缀 
+     * @return 字串集以及出现次数，如果不存在则返回null 
+     */  
+	public HashMap<String, Integer>getWordsForPrefix(String prefix)
+	{
+		return getWordsForPrefix(this.root,prefix);
+	}
+	private HashMap<String, Integer> getWordsForPrefix(Node root, String prefix) {
+		HashMap<String, Integer> map=new HashMap<String ,Integer>();
+		char[] chs=prefix.toLowerCase().toCharArray();
+		
+		for(int i=0;i<chs.length;i++)
+		{
+			int index=chs[i]-'a';
+			if(root.childs[index]==null)
+			{
+				return null;
+			}
+			root=root.childs[index];
+		}
+		return preTraversal(root, prefix);
+	}
+}
