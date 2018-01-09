@@ -20,11 +20,13 @@ public class Trie {
 		inserNode(this.root, word);
 	}
 
-	public void inserNode(Node root, String word) {
+	private void inserNode(Node root, String word) {
 		word = word.toLowerCase();
 		char wd[] = word.toCharArray();
+		
 		for (int i = 0; i < wd.length; i++) {
 			int index = wd[i] - 'a';// 下标
+			
 			if (root.childs[index] != null) {
 				// 已经存在，该子节点次数+1
 				root.childs[index].prefix_num++;
@@ -40,6 +42,7 @@ public class Trie {
 			}
 			root = root.childs[index];
 		}
+		
 	}
 	 /** 
      * 遍历Trie树，查找所有的words以及出现次数 
