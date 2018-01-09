@@ -28,12 +28,12 @@ public class Test_Distribute {
 		int th = BinaryTree.theight(tNode);
 		System.out.print("   TH by Algo1 is:" + th);
 		System.out.print("   height difference is:" + (bh - th));
-
+		System.out.println();
 		 
 
 		BinaryTree.setParents(tNode);
 
-		TreeNode[] temp = Tree.DistributeServer(tNode,5);
+		TreeNode[] temp = Tree.DistributeServer(tNode,16);
 		System.err.println("######################");
 		Tree.printSelectedNodes(temp);
 		
