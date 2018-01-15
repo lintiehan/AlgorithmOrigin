@@ -1,7 +1,9 @@
 package Base;
 
+import java.awt.List;
 import java.io.PipedReader;
 import java.util.HashMap;
+import java.util.PrimitiveIterator.OfDouble;
 import java.util.prefs.NodeChangeEvent;
 
 public class MyLinkedList {
@@ -115,23 +117,12 @@ public class MyLinkedList {
 		}
 	}
 
-	public static void main(String[] args) {
-
-		MyLinkedList list = new MyLinkedList();
-		list.addNode(1);
-		list.addNode(2);
-		list.addNode(3);
-		list.addNode(4);
-		list.addNode(5);
-		list.addNode(6);
-		System.out.println("length " + list.length());
-
-		list.printList();
-
-		// Node node = list.findElement(list.head, 4);
-		// System.out.println(node.data);
-		list.ReverseIteratively(list.head);
-		list.printList();
+	public void printList(Node head) {
+		Node temp = head;
+		while (temp != null) {
+			System.out.println(temp.data);
+			temp = temp.next;
+		}
 	}
 
 	/*
@@ -226,7 +217,7 @@ public class MyLinkedList {
 		return !(fast==null||fast.next==null);
 	}
 	/*
-	 * 如何检测一个链表是否有环
+	 * 如何检测一个链表环的入口
 	 */
 	public Node findLoopPort(Node head)
 	{
@@ -288,6 +279,65 @@ public class MyLinkedList {
 			tail2=tail2.next;
 		}
 		return tail1==tail2;
+	}
+	/*
+	 * 合并有序链表
+	 */
+	public Node mergeList(Node n1,Node n2)
+	{
+		if(n1==null)
+			return n2;
+		if(n2==null)
+			return n1;
+		Node temp1=n1;
+		Node temp2=n2;
+		Node head=new Node(0);
+		Node headtemp=head;
+		while(temp1!=null&&temp2!=null)
+		{
+			if(temp1.data<temp2.data)
+			{
+				head.next=temp1;
+				head=head.next;
+				temp1=temp1.next;
+			}else {
+				head.next=temp2;
+				head=head.next;
+				temp2=temp2.next;
+			}
+		}
+		while(temp1!=null)
+		{
+			head.next=temp1;
+			head=head.next;
+			temp1=temp1.next;
+		}
+		while(temp2!=null)
+		{
+			head.next=temp2;
+			head=head.next;
+			temp2=temp2.next;
+		}
+		head=headtemp.next;
+		return head;
+		
+	}
+	
+	public static void main(String[] args) {
+		MyLinkedList TEMP = new MyLinkedList();
+		
+		MyLinkedList list = new MyLinkedList();
+		list.addNode(1);
+		list.addNode(2);
+		list.addNode(2);
+		list.printList();
+		MyLinkedList list1 = new MyLinkedList();
+		list1.addNode(4);
+		list1.addNode(5);
+		list1.addNode(6); 
+		list1.printList();
+		TEMP.head=TEMP.mergeList(list.head, list1.head);
+		TEMP.printList(TEMP.head); 
 	}
 }
 

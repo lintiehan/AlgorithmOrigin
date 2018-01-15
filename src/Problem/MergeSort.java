@@ -1,6 +1,6 @@
 package Problem;
 
-//Á½¸öÓĞĞòÊı×éµÄºÏ²¢ÅÅĞò
+//åˆå¹¶ä¸¤ä¸ªæœ‰åºçš„æ•°ç»„ï¼Œä¿æŒé€’å¢æ€§
 public class MergeSort {
 	  public static int[] sort(int []a,int []b)
 	  {
