@@ -3,7 +3,7 @@ package Test;
 import java.io.File;
 import java.util.List;
 
-public class Test_Algorithm1 {
+public class Test_BFS {
 	final static int num = 10000;
 
 	public static void main(String[] args) throws Exception {
@@ -27,6 +27,16 @@ public class Test_Algorithm1 {
 			}
 			System.out.println();
 		}
+
+	 
+		int th = BinaryTree.theight(tNode);
+		System.out.println("BH is:" + bh+"   TH by Algo1 is:" + th+"   height difference is:" + (bh - th)); 
+
+		List<TreeNode[]> queue=TreeDiv.divNodeByNums(tNode, 16);
+		TreeDiv.showQueue(queue);
+		 
+		
+		
 		long time = System.currentTimeMillis() - start;
 		System.out.println("time cost " + time + "ms");
 	}

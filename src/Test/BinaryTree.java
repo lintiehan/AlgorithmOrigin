@@ -197,11 +197,12 @@ public class BinaryTree {
 			Merge(subTree.rightChild);
 			TreeNode parent = parent(root, subTree);
 			/*
-			 * System.out.println( "Merge------>謇ｧ陦檎噪闃らせ?�ｿｽ?" + subTree.key + " �ｿｽ?遲ｾ荳ｺ:" +
-			 * subTree.label + " 譏ｯ蜷ｦ蜿ｯ謫搾ｿｽ?-----" + subTree.isVisted);
-			 * System.out.println("Merge------>ﾖｴ蟾ｦ蟄ｩ�ｿｽ?" + subTree.leftChild.key + " �ｿｽ?遲ｾ荳ｺ:" +
-			 * subTree.leftChild.label); System.out.println("Merge------>ﾖｴﾖｴ蜿ｳ蟄ｩ�ｿｽ?" +
-			 * subTree.rightChild.key + " �ｿｽ?遲ｾ荳ｺ:" + subTree.rightChild.label);
+			 * System.out.println( "Merge------>謇ｧ陦檎噪闃らせ?�ｿｽ?" + subTree.key + " �ｿｽ?遲ｾ荳ｺ:"
+			 * + subTree.label + " 譏ｯ蜷ｦ蜿ｯ謫搾ｿｽ?-----" + subTree.isVisted);
+			 * System.out.println("Merge------>ﾖｴ蟾ｦ蟄ｩ�ｿｽ?" + subTree.leftChild.key +
+			 * " �ｿｽ?遲ｾ荳ｺ:" + subTree.leftChild.label);
+			 * System.out.println("Merge------>ﾖｴﾖｴ蜿ｳ蟄ｩ�ｿｽ?" + subTree.rightChild.key +
+			 * " �ｿｽ?遲ｾ荳ｺ:" + subTree.rightChild.label);
 			 */
 			if (parent != null && subTree.isVisted == true && subTree.leftChild.label == "TLeafL"
 					&& subTree.rightChild.label == "TLeafL") {
@@ -305,13 +306,13 @@ public class BinaryTree {
 			TreeNode parent = parent(newroot, subTree);
 
 			/*
-			 * System.out.println("Merge2------>ﾖｴ謇ｧ陦檎噪闃らせ:" + subTree.key + " �ｿｽ?遲ｾ荳ｺ?�ｿｽ?" +
-			 * subTree.label + " 譏ｯ蜷ｦ蜿ｯ謫堺ｽ懶ｿｽ?-----" + subTree.isVisted);
-			 * System.out.println("Merge2------>ﾖｴ蟾ｦ蟄ｩ�ｿｽ?:" + subTree.leftChild.key + " �ｿｽ?遲ｾ荳ｺ?�ｿｽ?"
-			 * + subTree.leftChild.label+ " 譏ｯ蜷ｦ蜿ｯ謫堺ｽ懶ｿｽ?-----" + subTree.leftChild.isVisted);
-			 * System.out.println("Merge2------>ﾖｴ蜿ｳ蟄ｩ�ｿｽ?:" + subTree.rightChild.key +
-			 * " �ｿｽ?遲ｾ荳ｺ?�ｿｽ?" + subTree.rightChild.label+ " 譏ｯ蜷ｦ蜿ｯ謫堺ｽ懶ｿｽ?-----" +
-			 * subTree.rightChild.isVisted); System.out.println();
+			 * System.out.println("Merge2------>ﾖｴ謇ｧ陦檎噪闃らせ:" + subTree.key +
+			 * " �ｿｽ?遲ｾ荳ｺ?�ｿｽ?" + subTree.label + " 譏ｯ蜷ｦ蜿ｯ謫堺ｽ懶ｿｽ?-----" + subTree.isVisted);
+			 * System.out.println("Merge2------>ﾖｴ蟾ｦ蟄ｩ�ｿｽ?:" + subTree.leftChild.key +
+			 * " �ｿｽ?遲ｾ荳ｺ?�ｿｽ?" + subTree.leftChild.label+ " 譏ｯ蜷ｦ蜿ｯ謫堺ｽ懶ｿｽ?-----" +
+			 * subTree.leftChild.isVisted); System.out.println("Merge2------>ﾖｴ蜿ｳ蟄ｩ�ｿｽ?:" +
+			 * subTree.rightChild.key + " �ｿｽ?遲ｾ荳ｺ?�ｿｽ?" + subTree.rightChild.label+
+			 * " 譏ｯ蜷ｦ蜿ｯ謫堺ｽ懶ｿｽ?-----" + subTree.rightChild.isVisted); System.out.println();
 			 */ // kind 1
 			if (isAllow(subTree)
 					&& (subTree.isVisted == true && subTree.leftChild.label == "TLeafL"
@@ -1207,10 +1208,12 @@ public class BinaryTree {
 			if (node.leftChild != null) {
 				node.leftChild.parentChild = node;
 				node.leftChild.position = -1;
-				
+			}
+			if (node.centerChild != null) {
 				node.centerChild.parentChild = node;
 				node.centerChild.position = 0;
-				
+			}
+			if (node.rightChild != null) {
 				node.rightChild.parentChild = node;
 				node.rightChild.position = 1;
 			}

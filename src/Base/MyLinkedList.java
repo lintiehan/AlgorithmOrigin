@@ -91,20 +91,19 @@ public class MyLinkedList {
 	 * 
 	 */
 	public void ReverseIteratively(Node head) {
-		Node pReversedHead = head;
+		Node reversedHead = head;
 		Node cur = head;
 		Node pPre = null;
 		while (cur != null) {
-
-			Node pNext = cur.next; // 要处理的下一个节点
-			if (pNext == null)
-				pReversedHead = cur;
+			Node curNext = cur.next; // 要处理的下一个节点
+			if (curNext == null)
+				reversedHead = cur;
 
 			cur.next = pPre;
 			pPre = cur;
-			cur = pNext;
+			cur = curNext;
 		}
-		this.head = pReversedHead;
+		this.head = reversedHead;
 	}
 
 	 
@@ -256,6 +255,37 @@ public class MyLinkedList {
 		node.next=node.next.next;
 		return true;
 	}
+	//给定链表的头指针和一个节点指针，在O（1）时间内删除该节点
+	public void deleteNodewithnode(Node head,Node node)
+	{
+		if(head==null)
+		{
+			return;
+		}
+		
+		if(node.next==null)
+		{
+			Node cur=head;
+			while(cur.next!=node)
+			{
+				cur=cur.next;
+			}
+			cur.next=null;
+			deleteNode(node);
+			node=null;
+		}else
+		{
+			Node cur=node.next;
+			int temp=cur.data;
+			cur.data=node.data;
+			node.data=temp;
+			node.next=cur.next;
+			deleteNode(cur);
+			cur=null;
+		}
+	}
+	
+	
 	/*
 	 * 如何判断两个链表是否相交
 	 * 分别遍历两个链表，记录它们的尾节点，如果它们的尾节点相同，那么着两个链表相交，否则不相交
@@ -329,15 +359,13 @@ public class MyLinkedList {
 		MyLinkedList list = new MyLinkedList();
 		list.addNode(1);
 		list.addNode(2);
-		list.addNode(2);
+		list.addNode(3);
 		list.printList();
-		MyLinkedList list1 = new MyLinkedList();
-		list1.addNode(4);
-		list1.addNode(5);
-		list1.addNode(6); 
-		list1.printList();
-		TEMP.head=TEMP.mergeList(list.head, list1.head);
-		TEMP.printList(TEMP.head); 
+	 
+		list.ReverseIteratively(list.head);
+		list.printList();
+		//TEMP.head=TEMP.mergeList(list.head, list1.head);
+		//TEMP.printList(TEMP.head); 
 	}
 }
 
