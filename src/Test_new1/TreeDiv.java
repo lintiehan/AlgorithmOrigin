@@ -127,7 +127,15 @@ public class TreeDiv {
 
 		System.out.println("pc's size " + pc + "   list.size " + nodelist.size());
 
-		TreeDiv.showResult(nodelist, pc, k);
+		TreeDiv.showList(nodelist, pc, k);
+		
+		int[] sum = TreeDiv.showResult(nodelist, pc, k);
+		Arrays.sort(sum);
+		int min = sum[0];
+		int max = sum[sum.length - 1];
+
+	 
+	System.out.println("k="+k+" "+ min +" "+ max );
 	}
 
 	public static TreeNode[] DistributeServer(TreeNode node, int serverNum) throws CloneNotSupportedException {
@@ -596,14 +604,7 @@ public class TreeDiv {
 			}
 
 			removeNode(queue, temp);
-
-			if ((a > b || a == b) && (a > c || a == c)) {
-				temp = temp.leftChild;
-			} else if ((c > b || c == b) && (c > a || c == a)) {
-				temp = temp.centerChild;
-			} else if ((b > a || b == a) && (b > c || b == c)) {
-				temp = temp.rightChild;
-			}
+ 
 			index = getBiggestIndex(queue);
 
 			if (queue.size() + 2 > k * pc) {
@@ -647,7 +648,6 @@ public class TreeDiv {
 			if (temp.size() == k) {
 				LinkedList<TreeNode> t = (LinkedList<TreeNode>) temp.clone();
 				nodelist.add(t);
-
 				temp.clear();
 				count++;
 			}
@@ -656,15 +656,9 @@ public class TreeDiv {
 			}
 		}
 		while (iterator.hasNext()) {
-
-			temp.add((TreeNode) iterator.next());
-			if (temp.size() == k) {
-				LinkedList<TreeNode> t = (LinkedList<TreeNode>) temp.clone();
-				nodelist.add(t);
-			}
+			temp.add((TreeNode) iterator.next());	 		 
 		}
 		nodelist.add(temp);
-
 		return nodelist;
 	}
 
