@@ -35,10 +35,13 @@ public class Test_Distribute {
 		System.out.print("   height difference is:" + (bh - th));
 		System.out.println();
 		BinaryTree.setParents(tNode);
-		List<TreeNode> nodelist=new TreeDiv().divTwo(tNode,9);
-		TreeDiv.showList(nodelist,10);
+		int pc=16;
+		List<TreeNode> nodelist=new TreeDiv().divTwo(tNode,pc);
+		System.out.println("pc's size "+pc+"   list.size "+nodelist.size());
+		 TreeDiv.showList(nodelist,pc);
 		long time = System.currentTimeMillis() - start;
 		System.out.println("cost time " + time + "ms");
+		 
 	}
 	 
 }

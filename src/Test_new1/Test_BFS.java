@@ -1,4 +1,4 @@
-package Test_new;
+package Test_new1;
 
 import java.io.File;
 import java.util.List;
@@ -36,7 +36,7 @@ public class Test_BFS {
 		//TreeDiv.showQueue(queue);
 		 
 		
-		
+		 
 		long time = System.currentTimeMillis() - start;
 		System.out.println("time cost " + time + "ms");
 	}
