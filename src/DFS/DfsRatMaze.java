@@ -19,7 +19,7 @@ public class DfsRatMaze {
                 {0, 1},  
                 {-1, 0},  
                 {0, -1}  
-        };  
+        };   
         int nextX, nextY;  
         int posible;  
         if(startX == endX && startY == endY) {  

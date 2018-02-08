@@ -1,8 +1,8 @@
 package Problem;
 
 import java.util.LinkedList;
-import java.util.List;
-//序列化和反序列化二叉树  
+import java.util.List; 
+//浜屽弶鏍戝簭鍒楀寲
 public class SerializePro {
 	 private static class BinaryTreeNode {
 	        private int val;
@@ -27,7 +27,7 @@ public class SerializePro {
 	            System.out.printf("%-3d", root.val);
 	            print(root.right);
 	        }
-	    }
+	    } 
 	 private static void test01() {
 	        BinaryTreeNode n1 = new BinaryTreeNode(1);
 	        BinaryTreeNode n2 = new BinaryTreeNode(2);

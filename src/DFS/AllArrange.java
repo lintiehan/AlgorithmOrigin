@@ -4,12 +4,13 @@ import java.util.TreeSet;
 
 import org.omg.PortableInterceptor.Interceptor;
 
-public class AllArrange {
-	static TreeSet<Integer> values=new TreeSet();
+public class AllArrange { 
+	
 	public static void main(String[] args) {
 		String testString="aab";
 		Permutation1(testString.toCharArray(),0,testString.length());
 		 System.out.println("---------------");
+		 
 		 Permutation(testString.toCharArray(),0,testString.length());
 		/*Iterator<Integer> i=values.iterator();
 		while(i.hasNext())
@@ -23,7 +24,7 @@ public class AllArrange {
 		 str[a]=str[b];
 		 str[b]=temp;
 	}
-	
+	 
 	public static void Permutation(char[] str,int index,int size){
 		if(index==size-1)
 		{
@@ -33,7 +34,6 @@ public class AllArrange {
 				 string+=str[i];
 				 System.out.print(str[i]);
 			 }
-			 
 			// values.add(Integer.valueOf(string));
 			 System.out.println();
 		}else {
@@ -54,7 +54,7 @@ public class AllArrange {
      * @return 
      */  
     private static boolean isSwap(char[] array, int start, int end) {  
-    	System.out.println("start="+start+" end ="+end);
+   // 	System.out.println("start="+start+" end ="+end);
         for (int i = start; i < end; i++) {  
             if(array[end] == array[i]){  
                 return false;  

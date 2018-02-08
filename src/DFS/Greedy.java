@@ -18,7 +18,7 @@ public class Greedy {
 		System.out.println("输入物品数量：");
 		int n = in.nextInt();
 		int[] w = new int[n];// 物品重量数组
-		int[] v = new int[n];// 物品价值数组
+		int[] v = new int[n];// 物品价值数组 
 		System.out.println("现在输入这些物品的重量：");
 		for (int i = 0; i < n; i++) {
 			w[i] = in.nextInt();

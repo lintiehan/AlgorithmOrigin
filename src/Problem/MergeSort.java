@@ -17,7 +17,7 @@ public class MergeSort {
 			  {
 				  merge[lenmerge++]=b[lenb++];
 			  }
-		  }
+		  } 
 		  while(lena<a.length)
 		  {
 			  merge[lenmerge++]=a[lena++];

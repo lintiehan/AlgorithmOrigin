@@ -1,4 +1,4 @@
-package Problem;
+package DP;
  
 
 public class LongestcommonSubsequence {
@@ -8,7 +8,7 @@ public class LongestcommonSubsequence {
 		//System.out.println(longestCommonSubsequence(a, b));
 		longestCommonSubsequence2(a, b);
 	}
-	
+	 
 	public static void longestCommonSubsequence2(String str1,String str2)
 	{
 		 int len1=str1.length()-1;
@@ -19,6 +19,7 @@ public class LongestcommonSubsequence {
 		 int []cnt=new int [Math.max(str1.length(), str2.length())];
 		 int maxlen=0;
 		 int pos=0;
+		 
 		 for(int i=0;i<=len1;i++)
 		 {
 			 for(int j=len2;j>=0;j--)

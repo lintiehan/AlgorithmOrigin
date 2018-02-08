@@ -15,7 +15,7 @@ public class LongestCommonPrefix {
 		String result=getLongestCommonPart(strs);
 		System.out.println(result);
 	}
-
+ 
 	private static String getLongestCommonPart(String[] strs) {
 		// TODO Auto-generated method stub
 		if(strs.length==0)

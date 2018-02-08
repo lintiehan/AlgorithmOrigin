@@ -22,7 +22,7 @@ public class Test1 {
 			if(first[i]==0)
 			{
 				first[i]=1;
-				s[code]=i+1;
+				s[code]=i+1; 
 				seek(code + 1);
                 first[i] = 0;
 			}

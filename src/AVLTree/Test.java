@@ -7,39 +7,39 @@ public class Test {
 	        int i;
 	        AVLTree<Integer> tree = new AVLTree<Integer>();
 
-	        System.out.printf("== ÒÀ´ÎÌí¼Ó: ");
+	        System.out.printf("== ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½: ");
 	        for(i=0; i<arr.length; i++) {
 	            System.out.printf("%d ", arr[i]);
 	            tree.insert(arr[i]);
-	        }
+	        } 
 
-	        System.out.printf("\n== Ç°Ðò±éÀú: ");
+	        System.out.printf("\n== Ç°ï¿½ï¿½ï¿½ï¿½ï¿½: ");
 	        tree.preOrder();
 
-	        System.out.printf("\n== ÖÐÐò±éÀú: ");
+	        System.out.printf("\n== ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½: ");
 	        tree.inOrder();
 
-	        System.out.printf("\n== ºóÐò±éÀú: ");
+	        System.out.printf("\n== ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½: ");
 	        tree.postOrder();
 	        System.out.printf("\n");
 
-	        System.out.printf("== ¸ß¶È: %d\n", tree.height());
-	        System.out.printf("== ×îÐ¡Öµ: %d\n", tree.minimum());
-	        System.out.printf("== ×î´óÖµ: %d\n", tree.maximum());
-	        System.out.printf("== Ê÷µÄÏêÏ¸ÐÅÏ¢: \n");
+	        System.out.printf("== ï¿½ß¶ï¿½: %d\n", tree.height());
+	        System.out.printf("== ï¿½ï¿½Ð¡Öµ: %d\n", tree.minimum());
+	        System.out.printf("== ï¿½ï¿½ï¿½Öµ: %d\n", tree.maximum());
+	        System.out.printf("== ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½Ï¢: \n");
 	        tree.print();
 
 	        i = 8;
-	        System.out.printf("\n== É¾³ý¸ù½Úµã: %d", i);
+	        System.out.printf("\n== É¾ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½: %d", i);
 	        tree.removeNode(i);
 
-	        System.out.printf("\n== ¸ß¶È: %d", tree.height());
-	        System.out.printf("\n== ÖÐÐò±éÀú: ");
+	        System.out.printf("\n== ï¿½ß¶ï¿½: %d", tree.height());
+	        System.out.printf("\n== ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½: ");
 	        tree.inOrder();
-	        System.out.printf("\n== Ê÷µÄÏêÏ¸ÐÅÏ¢: \n");
+	        System.out.printf("\n== ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½Ï¢: \n");
 	        tree.print();
 
-	        // Ïú»Ù¶þ²æÊ÷
+	        // ï¿½ï¿½ï¿½Ù¶ï¿½ï¿½ï¿½ï¿½ï¿½
 	        tree.destroy();
 	    }
 }

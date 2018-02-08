@@ -9,7 +9,7 @@ public class ShuDu {
     }  
   
     public static void main(String[] args) {  
-        // 待解数独  
+        // 待解数独   
         int[][] sudoku = {  
                 {8, 0, 0, 0, 0, 0, 0, 0, 0},  
                 {0, 0, 3, 6, 0, 0, 0, 0, 0},  

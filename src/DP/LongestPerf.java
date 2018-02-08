@@ -1,9 +1,9 @@
 package DP;
 
 import java.util.Scanner;
-
+//最大前缀公共子串
 public class LongestPerf {
-	public static void main(String[] args) {
+	public static void main(String[] args) { 
 		Scanner scanner=new Scanner(System.in);
 		String [] strings=new String[2];
 		

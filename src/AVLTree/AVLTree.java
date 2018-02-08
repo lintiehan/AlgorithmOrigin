@@ -1,14 +1,14 @@
 package AVLTree;
 
 public class AVLTree<T extends Comparable<T>> {
-	private AVLTreeNode<T> mRoot;// 根节�?
+	private AVLTreeNode<T> mRoot;// 根节点
 
 	// AVL树的节点
 	class AVLTreeNode<T extends Comparable<T>> {
-		T key; // 关键�?
+		T key; // 关键字
 		int height;// 高度
-		AVLTreeNode<T> left; // 左孩�?
-		AVLTreeNode<T> right;// 右孩�?
+		AVLTreeNode<T> left; // 左孩子
+		AVLTreeNode<T> right;// 右孩子
 
 		public AVLTreeNode(T key, AVLTreeNode<T> left, AVLTreeNode<T> right) {
 			this.key = key;
@@ -19,8 +19,8 @@ public class AVLTree<T extends Comparable<T>> {
 	}
 
 	public AVLTree() {
-		mRoot = null;
-	}
+		mRoot = null; 
+	}  
 
 	// 获取树的高度
 	private int height(AVLTreeNode<T> tree) {
@@ -59,7 +59,7 @@ public class AVLTree<T extends Comparable<T>> {
 	// 前序遍历
 	private void inOrder(AVLTreeNode<T> tree) {
 		if (tree != null) {
-			inOrder(tree.left);
+			inOrder(tree.left); 
 			System.out.println(tree.key + " ");
 			inOrder(tree.right);
 		}
@@ -83,7 +83,7 @@ public class AVLTree<T extends Comparable<T>> {
 		return search(mRoot, key);
 	}
 
-	// 递归查找AVL树x中键值为key的节�?
+	// 递归查找AVL树x中键值为key的节�?
 	private AVLTreeNode<T> search(AVLTreeNode<T> x, T key) {
 		if (x == null)
 			return x;
@@ -100,7 +100,7 @@ public class AVLTree<T extends Comparable<T>> {
 		return iterativeSearch(mRoot, key);
 	}
 
-	// 非�?�归查找AVL树x中键值为key的节�?
+	// 非�?�归查找AVL树x中键值为key的节�?
 	private AVLTreeNode<T> iterativeSearch(AVLTreeNode<T> x, T key) {
 		while (x != null) {
 			int cmp = key.compareTo(x.key);
@@ -114,7 +114,7 @@ public class AVLTree<T extends Comparable<T>> {
 		return x;
 	}
 
-	// 查找�?小节点：返回tree为根节点的AVL树的�?小节�?
+	// 查找�?小节点：返回tree为根节点的AVL树的�?小节�?
 	private AVLTreeNode<T> minimum(AVLTreeNode<T> tree) {
 		if (tree == null)
 			return null;
@@ -130,7 +130,7 @@ public class AVLTree<T extends Comparable<T>> {
 		return null;
 	}
 
-	// 查找�?大节点：返回tree为根节点的AVL树的�?大节�?
+	// 查找�?大节点：返回tree为根节点的AVL树的�?大节�?
 	private AVLTreeNode<T> maximum(AVLTreeNode<T> tree) {
 		if (tree == null)
 			return null;
@@ -171,9 +171,9 @@ public class AVLTree<T extends Comparable<T>> {
 	}
 
 	/*
-	 * LR：左右对应的情况(左双旋转)�?
+	 * LR：左右对应的情况(左双旋转)�?
 	 *
-	 * 返回值：旋转后的根节�?
+	 * 返回值：旋转后的根节�?
 	 */
 	private AVLTreeNode<T> LRRotation(AVLTreeNode<T> k3) {
 		k3.left = RRRotation(k3.left);
@@ -188,9 +188,9 @@ public class AVLTree<T extends Comparable<T>> {
 	}
 
 	/*
-	 * 将结点插入到AVL树中，并返回根节�?
+	 * 将结点插入到AVL树中，并返回根节�?
 	 *
-	 * 参数说明�? tree AVL树的根结�? key 插入的结点的键�?? 返回值： 根节�?
+	 * 参数说明�? tree AVL树的根结�? key 插入的结点的键�?? 返回值： 根节�?
 	 */
 	private AVLTreeNode<T> insertNode(AVLTreeNode<T> tree, T key) {
 		if (tree == null) {
@@ -201,7 +201,7 @@ public class AVLTree<T extends Comparable<T>> {
 			}
 		} else {
 			int cmp = key.compareTo(tree.key);
-			// 应该将key插入到tree的左子树的情�?
+			// 应该将key插入到tree的左子树的情�?
 			if (cmp < 0) {
 				tree.left = insertNode(tree.left, key);
 				// 插入节点后，若AVL树失去平衡，则进行相应的调节
@@ -212,7 +212,7 @@ public class AVLTree<T extends Comparable<T>> {
 						tree = LRRotation(tree);
 					}
 				}
-			} else if (cmp > 0) // 应该将key插入到tree的右子树的情�?
+			} else if (cmp > 0) // 应该将key插入到tree的右子树的情�?
 			{
 				tree.right = insertNode(tree.right, key);
 				if (height(tree.right) - height(tree.left) == 2) {
@@ -223,7 +223,7 @@ public class AVLTree<T extends Comparable<T>> {
 					}
 				}
 			}else {
-				System.out.println("添加失败，不允许添加相同的节�?");
+				System.out.println("添加失败，不允许添加相同的节�?");
 			}
 		}
 		tree.height = max(height(tree.left), height(tree.right)) + 1;
@@ -237,17 +237,17 @@ public class AVLTree<T extends Comparable<T>> {
 	/*
 	 * 删除结点(z)，返回根节点
 	 *
-	 * 参数说明�? tree AVL树的根结�? z 待删除的结点 返回值： 根节�?
+	 * 参数说明�? tree AVL树的根结�? z 待删除的结点 返回值： 根节�?
 	 */
 	private AVLTreeNode<T> removeNode(AVLTreeNode<T> tree, AVLTreeNode<T> z) {
-		// 根为�? 或�?? 没有要删除的节点，直接返回null�?
+		// 根为�? 或�?? 没有要删除的节点，直接返回null�?
 		if (tree == null || z == null)
 			return null;
 
 		int cmp = z.key.compareTo(tree.key);
-		if (cmp < 0) { // 待删除的节点�?"tree的左子树"�?
+		if (cmp < 0) { // 待删除的节点�?"tree的左子树"�?
 			tree.left = removeNode(tree.left, z);
-			// 删除节点后，若AVL树失去平衡，则进行相应的调节�?
+			// 删除节点后，若AVL树失去平衡，则进行相应的调节�?
 			if (height(tree.right) - height(tree.left) == 2) {
 				AVLTreeNode<T> r = tree.right;
 				if (height(r.left) > height(r.right))
@@ -255,9 +255,9 @@ public class AVLTree<T extends Comparable<T>> {
 				else
 					tree = RRRotation(tree);
 			}
-		} else if (cmp > 0) { // 待删除的节点�?"tree的右子树"�?
+		} else if (cmp > 0) { // 待删除的节点�?"tree的右子树"�?
 			tree.right = removeNode(tree.right, z);
-			// 删除节点后，若AVL树失去平衡，则进行相应的调节�?
+			// 删除节点后，若AVL树失去平衡，则进行相应的调节�?
 			if (height(tree.left) - height(tree.right) == 2) {
 				AVLTreeNode<T> l = tree.left;
 				if (height(l.right) > height(l.left))
@@ -265,26 +265,26 @@ public class AVLTree<T extends Comparable<T>> {
 				else
 					tree = LLRotation(tree);
 			}
-		} else { // tree是对应要删除的节点�??
+		} else { // tree是对应要删除的节点�??
 			// tree的左右孩子都非空
 			if ((tree.left != null) && (tree.right != null)) {
 				if (height(tree.left) > height(tree.right)) {
 					// 如果tree的左子树比右子树高；
-					// �?(01)找出tree的左子树中的�?大节�?
-					// (02)将该�?大节点的值赋值给tree�?
-					// (03)删除该最大节点�??
-					// 这类似于�?"tree的左子树中最大节�?"�?"tree"的替身；
-					// 采用这种方式的好处是：删�?"tree的左子树中最大节�?"之后，AVL树仍然是平衡的�??
+					// �?(01)找出tree的左子树中的�?大节�?
+					// (02)将该�?大节点的值赋值给tree�?
+					// (03)删除该最大节点�??
+					// 这类似于�?"tree的左子树中最大节�?"�?"tree"的替身；
+					// 采用这种方式的好处是：删�?"tree的左子树中最大节�?"之后，AVL树仍然是平衡的�??
 					AVLTreeNode<T> max = maximum(tree.left);
 					tree.key = max.key;
 					tree.left = removeNode(tree.left, max);
 				} else {
-					// 如果tree的左子树不比右子树高(即它们相等，或右子树比左子树�?1)
-					// �?(01)找出tree的右子树中的�?小节�?
-					// (02)将该�?小节点的值赋值给tree�?
-					// (03)删除该最小节点�??
-					// 这类似于�?"tree的右子树中最小节�?"�?"tree"的替身；
-					// 采用这种方式的好处是：删�?"tree的右子树中最小节�?"之后，AVL树仍然是平衡的�??
+					// 如果tree的左子树不比右子树高(即它们相等，或右子树比左子树�?1)
+					// �?(01)找出tree的右子树中的�?小节�?
+					// (02)将该�?小节点的值赋值给tree�?
+					// (03)删除该最小节点�??
+					// 这类似于�?"tree的右子树中最小节�?"�?"tree"的替身；
+					// 采用这种方式的好处是：删�?"tree的右子树中最小节�?"之后，AVL树仍然是平衡的�??
 					AVLTreeNode<T> min = maximum(tree.right);
 					tree.key = min.key;
 					tree.right = removeNode(tree.right, min);
@@ -306,7 +306,7 @@ public class AVLTree<T extends Comparable<T>> {
 			mRoot = removeNode(mRoot, z);
 	}
 
-	// �?毁AVL�?
+	// �?毁AVL�?
 	private void destroy(AVLTreeNode<T> tree) {
 		if (tree == null)
 			return;
@@ -323,15 +323,15 @@ public class AVLTree<T extends Comparable<T>> {
 	}
 
 	/*
-	 * 打印"二叉查找�?"
+	 * 打印"二叉查找�?"
 	 *
-	 * key -- 节点的键�? direction -- 0，表示该节点是根节点; -1，表示该节点是它的父结点的左孩子; 1，表示该节点是它的父结点的右孩子�?
+	 * key -- 节点的键�? direction -- 0，表示该节点是根节点; -1，表示该节点是它的父结点的左孩子; 1，表示该节点是它的父结点的右孩子�?
 	 */
 	private void print(AVLTreeNode<T> tree, T key, int direction) {
 		if (tree != null) {
 			if (direction == 0) // tree是根节点
 				System.out.printf("%2d is root\n", tree.key, key);
-			else // tree是分支节�?
+			else // tree是分支节�?
 				System.out.printf("%2d is %2d's %6s child\n", tree.key, key, direction == 1 ? "right" : "left");
 
 			print(tree.left, tree.key, -1);

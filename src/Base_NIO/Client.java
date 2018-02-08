@@ -2,13 +2,12 @@ package Base_NIO;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
-import java.nio.Buffer;
 import java.nio.ByteBuffer;
-import java.nio.channels.ClosedChannelException;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.SocketChannel;
 import java.util.Iterator;
+import java.util.Scanner;
 import java.util.Set;
 
 public class Client {
@@ -37,8 +36,11 @@ public class Client {
 		return true;
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		start();
+		while (Client.sendMsg(new Scanner(System.in).nextLine()))
+			;
+
 	}
 }
 
@@ -131,21 +133,18 @@ class ClientHandle implements Runnable {
 			if (key.isReadable()) {
 				// 创建Bytebuffer，并开辟一个1M的缓冲区
 				ByteBuffer buffer = ByteBuffer.allocate(1024);
-				//读取请求码流，对字节进行编解码
+				// 读取请求码流，对字节进行编解码
 				int readBytes = sc.read(buffer);
-				if(readBytes>0)
-				{
-					//将缓冲区当前的limit设置为position=0，用于后续对缓冲区的读取操作
+				if (readBytes > 0) {
+					// 将缓冲区当前的limit设置为position=0，用于后续对缓冲区的读取操作
 					buffer.flip();
-					//根据缓冲区可读字节数创建字节数组
-					byte[] bytes=new byte[buffer.remaining()]; 
-					//将缓冲区可读字节数组复制到新建的数组中
+					// 根据缓冲区可读字节数创建字节数组
+					byte[] bytes = new byte[buffer.remaining()];
+					// 将缓冲区可读字节数组复制到新建的数组中
 					buffer.get(bytes);
-					String result=new String(bytes, "UTF-8");
-					System.out.println("客户端收到消息: "+result);
-				}
-				else if(readBytes<0)
-				{
+					String result = new String(bytes, "UTF-8");
+					System.out.println("客户端收到消息: " + result);
+				} else if (readBytes < 0) {
 					key.cancel();
 					sc.close();
 				}
@@ -167,10 +166,8 @@ class ClientHandle implements Runnable {
 
 	private void doConnect() throws Exception {
 		// TODO Auto-generated method stub
-		if (socketChannel.connect(new InetSocketAddress(host, port)))
-			;
-		else
-			socketChannel.register(selector, SelectionKey.OP_CONNECT);
+		if (socketChannel.connect(new InetSocketAddress(host, port)));
+		else socketChannel.register(selector, SelectionKey.OP_CONNECT);
 	}
 
 	public void sendMsg(String msg) throws IOException {
