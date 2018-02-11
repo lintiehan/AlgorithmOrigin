@@ -10,7 +10,7 @@ public class Test_Algorithm1 {
 
 		long start = System.currentTimeMillis();
 
-		BinaryTree bt = new BinaryTree();
+		BinaryTree bt = new BinaryTree(); 
 		bt.createBTree(bt.root);
 		//TreeNode node = bt.root;
 

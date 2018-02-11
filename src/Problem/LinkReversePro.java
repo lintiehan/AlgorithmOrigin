@@ -21,55 +21,55 @@ public class LinkReversePro {
 			this.next = next;
 		}
 		
-	}
+	} 
 	/*
-	 * ±éÀú·´×ª·¨:´ÓÇ°Íùºó·´×ª¸÷¸ö½áµãµÄÖ¸ÕëÓòµÄÖ¸Ïò¡£ 
-	»ù±¾Ë¼Â·ÊÇ£º½«µ±Ç°½ÚµãcurµÄÏÂÒ»¸ö½Úµã cur.getNext()»º´æµ½tempºó£¬È»ºó¸ü¸Äµ±Ç°½ÚµãÖ¸ÕëÖ¸ÏòÉÏÒ»½áµãpre¡£Ò²¾ÍÊÇËµÔÚ·´×ªµ±Ç°½áµãÖ¸ÕëÖ¸ÏòÇ°£¬ÏÈ°Ñµ±Ç°½áµãµÄÖ¸ÕëÓòÓÃtmpÁÙÊ±±£´æ£¬ÒÔ±ãÏÂÒ»´ÎÊ¹ÓÃ£¬Æä¹ý³Ì¿É±íÊ¾ÈçÏÂ£º 
-	pre£ºÉÏÒ»½áµã 
-	cur: µ±Ç°½áµã 
-	tmp: ÁÙÊ±½áµã£¬ÓÃÓÚ±£´æµ±Ç°½áµãµÄÖ¸ÕëÓò£¨¼´ÏÂÒ»½áµã£©
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½:ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ 
+	ï¿½ï¿½ï¿½ï¿½Ë¼Â·ï¿½Ç£ï¿½ï¿½ï¿½ï¿½ï¿½Ç°ï¿½Úµï¿½curï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Úµï¿½ cur.getNext()ï¿½ï¿½ï¿½æµ½tempï¿½ï¿½È»ï¿½ï¿½ï¿½ï¿½Äµï¿½Ç°ï¿½Úµï¿½Ö¸ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½preï¿½ï¿½Ò²ï¿½ï¿½ï¿½ï¿½Ëµï¿½Ú·ï¿½×ªï¿½ï¿½Ç°ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½Ö¸ï¿½ï¿½Ç°ï¿½ï¿½ï¿½È°Ñµï¿½Ç°ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½tmpï¿½ï¿½Ê±ï¿½ï¿½ï¿½æ£¬ï¿½Ô±ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ê¹ï¿½Ã£ï¿½ï¿½ï¿½ï¿½ï¿½Ì¿É±ï¿½Ê¾ï¿½ï¿½ï¿½Â£ï¿½ 
+	preï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ 
+	cur: ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ 
+	tmp: ï¿½ï¿½Ê±ï¿½ï¿½ã£¬ï¿½ï¿½ï¿½Ú±ï¿½ï¿½æµ±Ç°ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ò£¨¼ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ã£©
 	*/
 	public static Node ReverseList(Node node)
 	{
 		if(node==null)
 			return node;
-		Node pre=node;//ÉÏÒ»½Úµã
-		Node cur=node.getNext();//µ±Ç°½Úµã
-		Node temp;//ÁÙÊ±½Úµã£¬ÓÃÓÚ±£´æµ±Ç°½ÚµãµÄÖ¸ÕëÓò
+		Node pre=node;//ï¿½ï¿½Ò»ï¿½Úµï¿½
+		Node cur=node.getNext();//ï¿½ï¿½Ç°ï¿½Úµï¿½
+		Node temp;//ï¿½ï¿½Ê±ï¿½Úµã£¬ï¿½ï¿½ï¿½Ú±ï¿½ï¿½æµ±Ç°ï¿½Úµï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½
 		while(cur!=null)
 		{
 			temp=cur.getNext();
-			cur.setNext(pre);//·´×ªÖ¸ÕëÓòµÄÖ¸Ïò
-			//Ö¸ÕëÍùÏÂÒÆ¶¯
+			cur.setNext(pre);//ï¿½ï¿½×ªÖ¸ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½
+			//Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½
 			pre=cur;
 			cur=temp;
 		}
-		// ×îºó½«Ô­Á´±íµÄÍ·½ÚµãµÄÖ¸ÕëÓòÖÃÎªnull£¬»¹»ØÐÂÁ´±íµÄÍ·½áµã£¬¼´Ô­Á´±íµÄÎ²½áµã
+		// ï¿½ï¿½ï¿½Ô­ï¿½ï¿½ï¿½ï¿½ï¿½Í·ï¿½Úµï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªnullï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½ã£¬ï¿½ï¿½Ô­ï¿½ï¿½ï¿½ï¿½ï¿½Î²ï¿½ï¿½ï¿½
 		node.setNext(null);
 		return pre;
 	}
 	
 	
-	/*µÝ¹éÊµÏÖ
-	µÝ¹é·´×ª·¨£ºÔÚ·´×ªµ±Ç°½ÚµãÖ®Ç°ÏÈ·´×ªºóÐø½Úµã¡£ÕâÑù´ÓÍ·½áµã¿ªÊ¼£¬²ã²ãÉîÈëÖ±µ½Î²½áµã²Å¿ªÊ¼·´×ªÖ¸ÕëÓòµÄÖ¸Ïò¡£¼òµ¥µÄËµ¾ÍÊÇ´ÓÎ²½áµã¿ªÊ¼£¬ÄæÏò·´×ª¸÷¸ö½áµãµÄÖ¸ÕëÓòÖ¸Ïò£¬Æä¹ý³ÌÍ¼ÈçÏÂËùÊ¾£º 
-	head£ºÊÇÇ°Ò»½áµãµÄÖ¸ÕëÓò£¨PS£ºÇ°Ò»½áµãµÄÖ¸ÕëÓòÖ¸Ïòµ±Ç°½áµã£© 
-	head.getNext()£ºÊÇµ±Ç°½áµãµÄÖ¸ÕëÓò£¨PS£ºµ±Ç°½áµãµÄÖ¸ÕëÓòÖ¸ÏòÏÂÒ»½áµã£© 
-	reHead£ºÊÇ·´×ªºóÐÂÁ´±íµÄÍ·½áµã£¨¼´Ô­À´µ¥Á´±íµÄÎ²½áµã£© 
+	/*ï¿½Ý¹ï¿½Êµï¿½ï¿½
+	ï¿½Ý¹é·´×ªï¿½ï¿½ï¿½ï¿½ï¿½Ú·ï¿½×ªï¿½ï¿½Ç°ï¿½Úµï¿½Ö®Ç°ï¿½È·ï¿½×ªï¿½ï¿½ï¿½ï¿½ï¿½Úµã¡£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½ã¿ªÊ¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ï¿½Î²ï¿½ï¿½ï¿½Å¿ï¿½Ê¼ï¿½ï¿½×ªÖ¸ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ò¡£¼òµ¥µï¿½Ëµï¿½ï¿½ï¿½Ç´ï¿½Î²ï¿½ï¿½ã¿ªÊ¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ 
+	headï¿½ï¿½ï¿½ï¿½Ç°Ò»ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½PSï¿½ï¿½Ç°Ò»ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½Ç°ï¿½ï¿½ã£© 
+	head.getNext()ï¿½ï¿½ï¿½Çµï¿½Ç°ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½PSï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ã£© 
+	reHeadï¿½ï¿½ï¿½Ç·ï¿½×ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½ã£¨ï¿½ï¿½Ô­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î²ï¿½ï¿½ã£© 
 	*/
 	public static Node ReverseListByRecursion(Node node)
 	{
-	     // node¿´×÷ÊÇÇ°Ò»½áµã£¬head.getNext()ÊÇµ±Ç°½áµã£¬curÊÇ·´×ªºóÐÂÁ´±íµÄÍ·½áµã
+	     // nodeï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç°Ò»ï¿½ï¿½ã£¬head.getNext()ï¿½Çµï¿½Ç°ï¿½ï¿½ã£¬curï¿½Ç·ï¿½×ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½ï¿½
 		if(node==null||node.getNext()==null)
 		{
 			return node;
 		}
-		//ÏÈ·´×ªºóÐø½Úµãhead.getNext() 
+		//ï¿½È·ï¿½×ªï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½head.getNext() 
 		Node cur=ReverseListByRecursion(node.getNext());
-		//½«µ±Ç°½áµãµÄÖ¸ÕëÓòÖ¸ÏòÇ°Ò»½áµã
+		//ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½Ç°Ò»ï¿½ï¿½ï¿½
 		node.getNext().setNext(node);
-		//Ç°Ò»½áµãµÄÖ¸ÕëÓòÁîÎªnull
+		//Ç°Ò»ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªnull
 		node.setNext(null);
-		return cur;//·´×ªºóÐÂÁ´±íµÄÍ·½áµã
+		return cur;//ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½ï¿½
 	}
 	
 	
@@ -81,7 +81,7 @@ public class LinkReversePro {
 		node2.setNext(node3);
 	
 		Node cur=node1;
-		System.out.println("·­×ªÇ°£º");
+		System.out.println("ï¿½ï¿½×ªÇ°ï¿½ï¿½");
 		while(cur!=null)
 		{
 			System.out.print(cur.getVal()+" ");
@@ -89,7 +89,7 @@ public class LinkReversePro {
 		}
 		
 		 System.out.println();
-		System.out.println("·­×ªºó£º");
+		System.out.println("ï¿½ï¿½×ªï¿½ï¿½");
 		node1=ReverseList(node1);
 		while(node1!=null)
 		{
