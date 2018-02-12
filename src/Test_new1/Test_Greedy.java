@@ -13,7 +13,7 @@ public class Test_Greedy {
 		String string="";
 		int[] min = new int[2];
 		int[] max = new int[2];
-		for (int k = 1; k <= 1; k++) {
+		for (int k = 1; k <= 3; k++) {
 			for (int q = 0; q < 3; q++) {
 				TreeNode node = BuildBinary.buildRamdonBT();
 				int bh = BinaryTree.bheight(node);
