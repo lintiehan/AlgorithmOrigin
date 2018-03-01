@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.List;
 
 public class Test_Algorithm1 {
-	final static int num = 1000000;
+	final static int num = 1000;
  
 	public static void main(String[] args) throws Exception {
 

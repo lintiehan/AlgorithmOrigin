@@ -11,6 +11,8 @@ import java.util.Queue;
 import java.util.Stack;
 import java.util.TreeMap;
 
+import org.w3c.dom.stylesheets.LinkStyle;
+
 public class TreeDiv {
 	private static int PROCESSOR;
 	private static TreeNode[] RESULT;
@@ -118,6 +120,14 @@ public class TreeDiv {
 		standarDifNum = 100000;
 	}
 
+	public static void show(int[] nums) {
+
+		for (int i = 0; i < nums.length; i++) {
+			System.out.print(nums[i] + " ");
+		}
+
+	}
+
 	public static void main(String[] args) throws CloneNotSupportedException {
 		TreeDiv tDiv = new TreeDiv();
 
@@ -128,14 +138,14 @@ public class TreeDiv {
 		System.out.println("pc's size " + pc + "   list.size " + nodelist.size());
 
 		TreeDiv.showList(nodelist, pc, k);
-		
+
 		int[] sum = TreeDiv.showResult(nodelist, pc, k);
 		Arrays.sort(sum);
+		show(sum);
 		int min = sum[0];
 		int max = sum[sum.length - 1];
 
-	 
-	System.out.println("k="+k+" "+ min +" "+ max );
+		System.out.println("k=" + k + " " + min + " " + max);
 	}
 
 	public static TreeNode[] DistributeServer(TreeNode node, int serverNum) throws CloneNotSupportedException {
@@ -589,28 +599,22 @@ public class TreeDiv {
 		queue.add(node);
 		while (!queue.isEmpty() && queue.size() <= k * pc) {
 			temp = queue.remove(index);
-			int a = 0, b = 0, c = 0;
+
 			if (temp.leftChild != null) {
 				queue.add(index, temp.leftChild);
-				a = getSumNode(temp.leftChild);
 			}
 			if (temp.centerChild != null) {
 				queue.add(index + 1, temp.centerChild);
-				b = getSumNode(temp.centerChild);
 			}
 			if (temp.rightChild != null) {
 				queue.add(index + 2, temp.rightChild);
-				c = getSumNode(temp.rightChild);
 			}
 
-			removeNode(queue, temp);
- 
 			index = getBiggestIndex(queue);
-
 			if (queue.size() + 2 > k * pc) {
 				break;
 			}
-		}
+		} 
 		return queue;
 	}
 
@@ -627,38 +631,45 @@ public class TreeDiv {
 		return index;
 	}
 
-	private void removeNode(LinkedList<TreeNode> queue, TreeNode temp) {
-
-		for (int i = 0; i < queue.size(); i++) {
-			if (queue.get(i) == temp) {
-				queue.remove(i);
-			}
-		}
-	}
-
 	public static List<List<TreeNode>> divNodeByNums(List<TreeNode> list, int pc, int k) {
+	 
 		List<List<TreeNode>> nodelist = new ArrayList<>();
 		Iterator iterator = list.iterator();
 		LinkedList<TreeNode> temp = new LinkedList<>();
-		int count = 1;
+		int count = 0;
+	 	if (list.size() % k != 0) {
+		 
+			while (iterator.hasNext()) {
+				// printTree((TreeNode) iterator.next());
+				temp.add((TreeNode) iterator.next());
+				if (temp.size() == k) {
+					LinkedList<TreeNode> t = (LinkedList<TreeNode>) temp.clone();
+					nodelist.add(t);
+					temp.clear();
+					count++;
+				}
+				if (count == list.size() / k) {
+					break;
+				}
+			}
+			while (iterator.hasNext()) {
+				temp.add((TreeNode) iterator.next());
+			}
+			nodelist.add(temp);
+		} else {
+			 
+			while (iterator.hasNext()) {
+				// printTree((TreeNode) iterator.next());
+				temp.add((TreeNode) iterator.next());
+				if (temp.size() == k) {
+					LinkedList<TreeNode> t = (LinkedList<TreeNode>) temp.clone();
+					nodelist.add(t);
+					temp.clear();					
+				}
+			}
 
-		while (iterator.hasNext()) {
-			// printTree((TreeNode) iterator.next());
-			temp.add((TreeNode) iterator.next());
-			if (temp.size() == k) {
-				LinkedList<TreeNode> t = (LinkedList<TreeNode>) temp.clone();
-				nodelist.add(t);
-				temp.clear();
-				count++;
-			}
-			if (count == pc) {
-				break;
-			}
 		}
-		while (iterator.hasNext()) {
-			temp.add((TreeNode) iterator.next());	 		 
-		}
-		nodelist.add(temp);
+	 
 		return nodelist;
 	}
 
@@ -682,14 +693,14 @@ public class TreeDiv {
 		List<List<TreeNode>> queue = divNodeByNums(nodelist, pc, k);
 		int[] sum = new int[queue.size()];
 		for (int i = 0; i < queue.size(); i++) {
-			int temp = 0;		 
+			int temp = 0;
 			for (int j = 0; j < queue.get(i).size(); j++) {
 				temp += getSumNode(queue.get(i).get(j));
 			}
 			sum[i] = temp;
 		}
 
-	 return sum;
+		return sum;
 	}
 
 	public static double getAve(int[] nums) {
