@@ -1,4 +1,5 @@
 package DP;
+
 /*
  * 一个旅行者有一个最多能装m公斤的背包，现在有n中物品，每件的重量分别是W1、W2、……、Wn，
  * 每件物品的价值分别为C1、C2、……、Cn， 
@@ -31,13 +32,13 @@ public class Package0_1 {
 		for (int j = 0; j <= totalWeight; j++) {
 			// 遍历指定物品
 			for (int i = 0; i <= n; i++) {
-				
+
 				// 当背包不放入物品或承重为0时，最大价值为0
 				if (i == 0 || j == 0) {
 					bestValues[i][j] = 0;
 				} else {
 					// 如果第 i个物品小于于总承重，最优解不变
-					if (j < bags[i - 1].getWeight()) {
+					if (bags[i - 1].getWeight() > j) {
 						bestValues[i][j] = bestValues[i - 1][j];
 					} else {
 						// 如果第 i个物品不大于总承重，则最优解要么是包含第 i个背包的最优解，
@@ -47,16 +48,13 @@ public class Package0_1 {
 						bestValues[i][j] = Math.max(bestValues[i - 1][j], value + bestValues[i - 1][j - weight]);
 					}
 				}
-				
+
 			}
 		}
-		
-		
-		for(int i=0;i<bestValues.length;i++)
-		{
-			for(int j=0;j<bestValues[i].length;j++)
-			{
-				System.out.print(bestValues[i][j]+" ");
+
+		for (int i = 0; i < bestValues.length; i++) {
+			for (int j = 0; j < bestValues[i].length; j++) {
+				System.out.print(bestValues[i][j] + " ");
 			}
 			System.out.println();
 		}
@@ -68,14 +66,11 @@ public class Package0_1 {
 	}
 
 	public static void main(String[] args) {
-		Thing[] bags = new Thing[] {
-				new Thing(2, 13),
+		Thing[] bags = new Thing[] { new Thing(2, 13), 
 				new Thing(1, 10), 
 				new Thing(3, 24), 
 				new Thing(2, 15),
-				new Thing(4, 28), 
-				new Thing(5, 33), 
-				new Thing(3, 20), 
+				new Thing(4, 28), new Thing(5, 33), new Thing(3, 20), 
 				new Thing(1, 8) };
 		int totalWeight = 12;
 		Package0_1 problem = new Package0_1(bags, totalWeight);

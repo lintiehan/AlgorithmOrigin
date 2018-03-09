@@ -3,47 +3,42 @@ package DP;
 
 public class LongestcommonSubsequence {
 	public static void main(String[] args) {
-		String a="wabc";
-		String b="abc";
-		//System.out.println(longestCommonSubsequence(a, b));
+		String a="rabcew";
+		String b="wabcdabcew";
+		// System.out.println(longestCommonSubsequence(a, b));
 		longestCommonSubsequence2(a, b);
 	}
 	 
 	public static void longestCommonSubsequence2(String str1,String str2)
-	{
-		 int len1=str1.length()-1;
-		 int len2=str2.length()-1;
+	{	
+		 
 		 
 		 char[]cs1=str1.toCharArray();
 		 char[]cs2=str2.toCharArray();
-		 int []cnt=new int [Math.max(str1.length(), str2.length())];
-		 int maxlen=0;
-		 int pos=0;
 		 
-		 for(int i=0;i<=len1;i++)
+		 int matri[][]=new int[cs1.length][cs2.length];
+				 
+		 for(int i=0;i<matri.length;i++)
 		 {
-			 for(int j=len2;j>=0;j--)
+			 for(int j=0;j<matri[i].length;j++)
 			 {
-				 if(cs1[i]==cs2[j])
+				 if((i==0||j==0)&&(cs1[i]==cs2[j]))
 				 {
-					 cnt[j+1]=cnt[j]+1;
-					 if(cnt[j+1]>maxlen)
-					 {
-						 maxlen=cnt[j+1];
-						 pos=j+1;
-					 }
-				 }else
+					 matri[i][j]= 1;
+				 }
+				 else if( cs1[i]==cs2[j])
 				 {
-					 cnt[j+1]=0;
+					 matri[i][j]= matri[i-1][j-1]+1; 
 				 }
 			 }
 		 }
-		System.out.println(maxlen);
-		for(int i=0;i<maxlen;i++)
-		{
-			System.out.print(cs2[pos-maxlen+i]);
-		}
-	 
+		 
+		 for (int i = 0; i < matri.length; i++) {
+				for (int j = 0; j < matri[i].length; j++) {
+					System.out.print(matri[i][j] + " ");
+				}
+				System.out.println();
+			}
 	}
 	
 	
@@ -89,6 +84,16 @@ public class LongestcommonSubsequence {
 			}
 		}
 		System.out.println();
+		
+		for(int i1=0;i1<opt.length;i1++)
+		{
+			for(int j1=0;j1<opt[i1].length;j1++)
+			{
+				System.out.print(opt[i1][j1]+" ");
+			}
+			System.out.println();
+		}
+		
 		return opt[0][0];
 	}
 }
