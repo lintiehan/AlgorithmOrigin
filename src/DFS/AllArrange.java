@@ -5,9 +5,9 @@ import java.util.TreeSet;
 import org.omg.PortableInterceptor.Interceptor;
 
 public class AllArrange { 
-	
+	static int count=0;
 	public static void main(String[] args) {
-		String testString="aab";
+		String testString="qiniu";
 		Permutation1(testString.toCharArray(),0,testString.length());
 		 System.out.println("---------------");
 		 
@@ -17,6 +17,7 @@ public class AllArrange {
 		{
 			System.out.println(i.next());
 		}*/
+		 System.out.println(count);
 	}
 	public static void swap(char[] str,int a, int b )
 	{
@@ -73,7 +74,7 @@ public class AllArrange {
 				 string+=str[i];
 				 System.out.print(str[i]);
 			 }
-			 
+			 count++;
 			// values.add(Integer.valueOf(string));
 			 System.out.println();
 		}else {
@@ -83,8 +84,7 @@ public class AllArrange {
 					swap(str,start,i);
 					Permutation1(str,start+1,end);
 					swap(str,start,i);
-				}
-				 
+				}				 
 			}
 		}
 	}

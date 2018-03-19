@@ -37,7 +37,7 @@ public class AtomicStampedReferenceTest {
 		at2.start();
 		at1.join();
 		at2.join();
-
+ 
 		// AtomicStampedReference
 		Thread tsr1 = new Thread(new Runnable() {
 
