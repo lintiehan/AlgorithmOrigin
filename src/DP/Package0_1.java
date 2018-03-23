@@ -70,7 +70,9 @@ public class Package0_1 {
 				new Thing(1, 10), 
 				new Thing(3, 24), 
 				new Thing(2, 15),
-				new Thing(4, 28), new Thing(5, 33), new Thing(3, 20), 
+				new Thing(4, 28), 
+				new Thing(5, 33), 
+				new Thing(3, 20), 
 				new Thing(1, 8) };
 		int totalWeight = 12;
 		Package0_1 problem = new Package0_1(bags, totalWeight);

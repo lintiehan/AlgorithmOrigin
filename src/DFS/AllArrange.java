@@ -7,11 +7,11 @@ import org.omg.PortableInterceptor.Interceptor;
 public class AllArrange { 
 	static int count=0;
 	public static void main(String[] args) {
-		String testString="qiniu";
+		String testString="aabc";
 		Permutation1(testString.toCharArray(),0,testString.length());
 		 System.out.println("---------------");
 		 
-		 Permutation(testString.toCharArray(),0,testString.length());
+		// Permutation(testString.toCharArray(),0,testString.length());
 		/*Iterator<Integer> i=values.iterator();
 		while(i.hasNext())
 		{
@@ -55,7 +55,7 @@ public class AllArrange {
      * @return 
      */  
     private static boolean isSwap(char[] array, int start, int end) {  
-   // 	System.out.println("start="+start+" end ="+end);
+   	System.out.println("start="+array[start]+" end ="+array[end]);
         for (int i = start; i < end; i++) {  
             if(array[end] == array[i]){  
                 return false;  
@@ -72,11 +72,11 @@ public class AllArrange {
 			 for(int i=0;i<str.length;i++)
 			 {
 				 string+=str[i];
-				 System.out.print(str[i]);
+			 
 			 }
 			 count++;
 			// values.add(Integer.valueOf(string));
-			 System.out.println();
+			 System.out.println(string);
 		}else {
 			for(int i=start;i<end;i++)
 			{

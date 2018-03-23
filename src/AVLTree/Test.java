@@ -7,39 +7,30 @@ public class Test {
 	        int i;
 	        AVLTree<Integer> tree = new AVLTree<Integer>();
 
-	        System.out.printf("== �������: ");
+	        System.out.printf("插入数据");
 	        for(i=0; i<arr.length; i++) {
 	            System.out.printf("%d ", arr[i]);
 	            tree.insert(arr[i]);
 	        } 
 
-	        System.out.printf("\n== ǰ�����: ");
+	        System.out.printf("前序遍历：");
 	        tree.preOrder();
 
-	        System.out.printf("\n== �������: ");
+	        System.out.printf("\n中序遍历： ");
 	        tree.inOrder();
 
-	        System.out.printf("\n== �������: ");
+	        System.out.printf("\n后序遍历：");
 	        tree.postOrder();
 	        System.out.printf("\n");
 
-	        System.out.printf("== �߶�: %d\n", tree.height());
-	        System.out.printf("== ��Сֵ: %d\n", tree.minimum());
-	        System.out.printf("== ���ֵ: %d\n", tree.maximum());
-	        System.out.printf("== ������ϸ��Ϣ: \n");
+	        System.out.printf("树高度 ： %d\n", tree.height());
+	        System.out.printf("最小值 ： %d\n", tree.minimum());
+	        System.out.printf("最大值: %d\n", tree.maximum());
+	        System.out.printf("打印所有节点: \n");
 	        tree.print();
+ 
 
-	        i = 8;
-	        System.out.printf("\n== ɾ�����ڵ�: %d", i);
-	        tree.removeNode(i);
-
-	        System.out.printf("\n== �߶�: %d", tree.height());
-	        System.out.printf("\n== �������: ");
-	        tree.inOrder();
-	        System.out.printf("\n== ������ϸ��Ϣ: \n");
-	        tree.print();
-
-	        // ���ٶ�����
+	        // 移除树
 	        tree.destroy();
 	    }
 }
