@@ -1,6 +1,9 @@
 package Thread;
-
+ 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
+import java.util.Set;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -12,6 +15,7 @@ public class CountDownLatchTest {
 	private static final int count=3;
 
 	public static void main(String[] args) throws InterruptedException {
+	 	List <String>sList=new ArrayList<>() ;
 		sCountDownLatch =new CountDownLatch(count);
 		//线程池
 		ExecutorService fixpools=Executors.newFixedThreadPool(count);
@@ -26,10 +30,11 @@ public class CountDownLatchTest {
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-		}
+		} 
 	}
 	
 	private static class ConsumeRunnable implements Runnable{
+ 
 		private String name;
 		public ConsumeRunnable(String name)
 		{
