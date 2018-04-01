@@ -1163,8 +1163,8 @@ public class BinaryTree {
 		LinkedList<TreeNode> queue = new LinkedList<TreeNode>();
 		queue.offer(root);
 		TreeNode node = null;
-		TreeNode last = root;
-		TreeNode nlast = root;
+		TreeNode begin = root;
+		TreeNode end = root;
 		if (root == null) {
 			return null;
 		}
@@ -1173,19 +1173,19 @@ public class BinaryTree {
 			temp.add(node.key);
 			if (node.leftChild != null) {
 				queue.offer(node.leftChild);
-				nlast = node.leftChild;
+				end = node.leftChild;
 			}
 			if (node.centerChild != null) {
 				queue.offer(node.centerChild);
-				nlast = node.centerChild;
+				end = node.centerChild;
 			}
 			if (node.rightChild != null) {
 				queue.offer(node.rightChild);
-				nlast = node.rightChild;
+				end = node.rightChild;
 			}
-			if (node == last) {
+			if (node == begin) {
 				res.add(temp);
-				last = nlast;
+				begin = end;
 				temp = new ArrayList<Integer>();
 			}
 		}
