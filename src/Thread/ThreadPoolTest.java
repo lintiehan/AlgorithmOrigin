@@ -24,7 +24,7 @@ public class ThreadPoolTest {
 					localVariable.set(new LocalVariable());
 					// (5)
 					System.out.println("use local varaible");
-					  localVariable.remove();
+					localVariable.remove();
 
 				}
 			});
