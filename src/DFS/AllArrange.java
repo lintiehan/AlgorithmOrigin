@@ -55,7 +55,7 @@ public class AllArrange {
      * @return 
      */  
     private static boolean isSwap(char[] array, int start, int end) {  
-   	System.out.println("start="+array[start]+" end ="+array[end]);
+   //	System.out.println("start="+array[start]+" end ="+array[end]);
         for (int i = start; i < end; i++) {  
             if(array[end] == array[i]){  
                 return false;  

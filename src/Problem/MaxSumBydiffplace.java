@@ -2,9 +2,9 @@ package Problem;
 
 import java.util.Scanner;
 
-public class MaxSum {
+public class MaxSumBydiffplace {
 	public static void main(String[] args) {
-		int[] arr = {3,9,7,5,1,-1,1,7,2 };
+		int[] arr = {1,2,-1,4,5,-2,-1 };
 		int i = getMax(arr);
 		System.out.println(i);
 	}

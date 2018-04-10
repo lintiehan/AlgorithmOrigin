@@ -1,9 +1,7 @@
 package DP;
 
 public class MaxSubArr {
-	public static int max(int m, int n) {
-		return m > n ? m : n;
-	}
+ 
 
 	public static int maxSub(int[] arr) {
 		int n = arr.length;
@@ -11,8 +9,8 @@ public class MaxSubArr {
 		int[] all = new int[n];
 		end[0] = all[0] = arr[0];
 		for (int i = 1; i < n; i++) {
-			end[i] = max(end[i - 1] + arr[i], arr[i]);
-			all[i] = max(end[i], all[i - 1]);
+			end[i] =  Math.max(end[i - 1] + arr[i], arr[i]);
+			all[i] =  Math.max(end[i], all[i - 1]);
 		}
 		show(end);
 		System.out.println();
@@ -22,14 +20,14 @@ public class MaxSubArr {
 
 	public static int maxSub1(int[] arr) {
 		int n = arr.length;
-		int nAll = arr[0];// 有n个数组的最大子数组和
-		int nEnd = arr[0];// 有n个数组包括最后一个元素的子数组的最大和
+		int max = arr[0];// 有n个数组的最大子数组和
+		int temp = arr[0];// 有n个数组包括最后一个元素的子数组的最大和
 
 		for (int i = 1; i < n; i++) {
-			nEnd = max(nEnd + arr[i], arr[i]);
-			nAll = max(nEnd, nAll);
+			temp = Math.max(temp + arr[i], arr[i]);
+			max =  Math.max(temp, max);
 		}
-		return nAll;
+		return max;
 	}
 
 	public static void maxSub2(int[] arr) {

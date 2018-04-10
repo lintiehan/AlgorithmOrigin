@@ -7,7 +7,7 @@ import java.util.PrimitiveIterator.OfDouble;
 import java.util.prefs.NodeChangeEvent;
 
 public class MyLinkedList {
-	Node head = null;// 链表头的引用
+	static Node head = null;// 链表头的引用
 
 	// 添加节点
 	public void addNode(int d) {
@@ -352,7 +352,24 @@ public class MyLinkedList {
 		return head;
 		
 	}
-	
+	public static void reverseList(Node head1)
+	{
+		Node pReverseHead=head1;
+		Node pNode=head1;
+		Node pPrev=null;
+		while(pNode!=null)
+		{
+			Node pNext=pNode.next;
+			if(pNext==null)
+			{
+				pReverseHead=pNode;
+			}
+			pNode.next=pPrev;
+			pPrev=pNode;
+			pNode=pNext;
+		}
+		head=pReverseHead;
+	}
 	public static void main(String[] args) {
 		MyLinkedList TEMP = new MyLinkedList();
 		
