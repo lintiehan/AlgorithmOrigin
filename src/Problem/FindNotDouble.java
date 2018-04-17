@@ -2,12 +2,12 @@ package Problem;
 
 public class FindNotDouble {
 	public static void main(String[] args) {
-		int array[]= {1,1,2,3,3,4,4};
-		int num=findNum(array);
+		int array[]= {1,1,2,4,3,4,3};
+		int num=findNumOne(array);
 		System.out.println(num);
 		findNumRepeat();
 	}
-	public static int findNum(int []a)
+	public static int findNumOne(int []a)
 	{
 		int n=a.length;
 		int result=a[0];
@@ -21,7 +21,7 @@ public class FindNotDouble {
 	
 	public static void findNumRepeat()
 	{
-		int []a= {1,3,4,2,1,7,6,5};
+		int []a= {1,2,3,4,10,1};
 		 int n=a.length;
 		 int temp1=0;
 		 int temp2=0;

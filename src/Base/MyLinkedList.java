@@ -155,8 +155,9 @@ public class MyLinkedList {
 				} else {
 					cur = cur.next;
 				}
-				p = p.next;
+				 
 			}
+			p = p.next;
 		}
 	}
 	/*
@@ -377,9 +378,12 @@ public class MyLinkedList {
 		list.addNode(1);
 		list.addNode(2);
 		list.addNode(3);
+		list.addNode(2);
 		list.printList();
 	 
 		list.ReverseIteratively(list.head);
+		list.printList();
+		list.deleteDuplecate2(list.head);
 		list.printList();
 		//TEMP.head=TEMP.mergeList(list.head, list1.head);
 		//TEMP.printList(TEMP.head); 
