@@ -3,8 +3,8 @@ package DP;
 
 public class LongestcommonSubsequence {
 	public static void main(String[] args) {
-		String a="rabcew";
-		String b="wabcdabcew";
+		String a="abcde4";
+		String b="abgde";
 		// System.out.println(longestCommonSubsequence(a, b));
 		longestCommonSubsequence2(a, b);
 	}
