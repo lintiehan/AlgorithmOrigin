@@ -3,6 +3,9 @@ package AVLTree;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+import java.util.Stack;
+
+import javax.crypto.Cipher;
 
 public class AVLTree<T extends Comparable<T>> {
 	private AVLTreeNode<T> mRoot;// 根节点
@@ -60,12 +63,33 @@ public class AVLTree<T extends Comparable<T>> {
 		inOrder(mRoot);
 	}
 
-	// 前序遍历
+	//中序遍历
 	private void inOrder(AVLTreeNode<T> tree) {
 		if (tree != null) {
 			inOrder(tree.left);
 			System.out.println(tree.key + " ");
 			inOrder(tree.right);
+		}
+	}
+
+	// 中序遍历
+	private void inOrder1(AVLTreeNode<T> node) {
+		Stack<AVLTreeNode<T>> stack=new Stack<>();
+		AVLTreeNode cur=node;
+		while(cur!=null||!stack.isEmpty())
+		{
+			while(cur!=null)
+			{
+				stack.push(cur);
+				cur=cur.left;
+			}
+			if(!stack.empty())
+			{
+				cur=stack.pop();
+				System.out.println(cur.key);
+				stack.pop();
+				cur=cur.right;
+			}
 		}
 	}
 
@@ -348,31 +372,37 @@ public class AVLTree<T extends Comparable<T>> {
 		if (mRoot != null)
 			print(mRoot, mRoot.key, 0);
 	}
+
 	public void showRowbyRow() {
 		if (mRoot != null)
 			showRowbyRow(mRoot);
 	}
+
 	public void showRowbyRow(AVLTreeNode<T> node) {
-		AVLTreeNode<T> cur=node;
-		Queue<AVLTreeNode<T>> queue=new LinkedList<>();
+		AVLTreeNode<T> cur = node;
+		Queue<AVLTreeNode<T>> queue = new LinkedList<>();
 		queue.offer(cur);
-		int size=0;
-		int count=0;
-		while(queue.size()>0)
-		{
-			AVLTreeNode<T> temp=queue.poll();
-			if(temp.left!=null)
-			{
+
+		int current = 1;// 当前层还没打印的节点个数
+		int next = 0;// 下一层的节点个数
+
+		while (!queue.isEmpty()) {
+			AVLTreeNode<T> temp = queue.poll();
+			current--;
+			System.out.print(temp.key);
+			if (temp.left != null) {
 				queue.offer(temp.left);
-				size++;
+				next++;
 			}
-			if(temp.right!=null)
-			{
+			if (temp.right != null) {
 				queue.offer(temp.right);
-				size++;
+				next++;
 			}
-			System.out.print(temp.key+" ");
-			if()
+			if (current == 0) {
+				System.out.println();
+				current = next;
+				next = 0;
+			}
 		}
 	}
 

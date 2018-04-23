@@ -2,6 +2,7 @@ package Offer;
 
 /*
  * KMP重新认识
+ * http://www.cnblogs.com/yjiyjige/p/3263858.html
  */
 public class Test11 {
 
