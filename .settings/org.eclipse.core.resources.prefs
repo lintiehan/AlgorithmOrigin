@@ -1,6 +1,6 @@
 eclipse.preferences.version=1
 encoding//src/AVLTree/Test.java=UTF-8
-encoding//src/BackTracking/ShuDu.java=UTF-8
+encoding//src/DFS/ShuDu.java=UTF-8
 encoding//src/Problem/ConstructBinaryTree.java=GBK
 encoding//src/Problem/FindNum.java=UTF-8
 encoding//src/Problem/LinkReversePro.java=UTF-8

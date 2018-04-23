@@ -28,7 +28,7 @@ public class Test {
 	        System.out.printf("最大值: %d\n", tree.maximum());
 	        System.out.printf("打印所有节点: \n");
 	        tree.print();
- 
+	        tree.showRowbyRow();
 
 	        // 移除树
 	        tree.destroy();

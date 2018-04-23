@@ -1,10 +1,18 @@
 package AVLTree;
 
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
 public class AVLTree<T extends Comparable<T>> {
 	private AVLTreeNode<T> mRoot;// 根节点
 
+	public AVLTree() {
+		mRoot = null;
+	}
+
 	// AVL树的节点
-	class AVLTreeNode<T extends Comparable<T>> {
+	class AVLTreeNode<T> {
 		T key; // 关键字
 		int height;// 高度
 		AVLTreeNode<T> left; // 左孩子
@@ -17,10 +25,6 @@ public class AVLTree<T extends Comparable<T>> {
 			this.height = 0;
 		}
 	}
-
-	public AVLTree() {
-		mRoot = null; 
-	}  
 
 	// 获取树的高度
 	private int height(AVLTreeNode<T> tree) {
@@ -59,7 +63,7 @@ public class AVLTree<T extends Comparable<T>> {
 	// 前序遍历
 	private void inOrder(AVLTreeNode<T> tree) {
 		if (tree != null) {
-			inOrder(tree.left); 
+			inOrder(tree.left);
 			System.out.println(tree.key + " ");
 			inOrder(tree.right);
 		}
@@ -222,7 +226,7 @@ public class AVLTree<T extends Comparable<T>> {
 						tree = RLRotation(tree);
 					}
 				}
-			}else {
+			} else {
 				System.out.println("添加失败，不允许添加相同的节�?");
 			}
 		}
@@ -325,7 +329,8 @@ public class AVLTree<T extends Comparable<T>> {
 	/*
 	 * 打印"二叉查找�?"
 	 *
-	 * key -- 节点的键�? direction -- 0，表示该节点是根节点; -1，表示该节点是它的父结点的左孩子; 1，表示该节点是它的父结点的右孩子�?
+	 * key -- 节点的键�? direction -- 0，表示该节点是根节点; -1，表示该节点是它的父结点的左孩子;
+	 * 1，表示该节点是它的父结点的右孩子�?
 	 */
 	private void print(AVLTreeNode<T> tree, T key, int direction) {
 		if (tree != null) {
@@ -343,4 +348,32 @@ public class AVLTree<T extends Comparable<T>> {
 		if (mRoot != null)
 			print(mRoot, mRoot.key, 0);
 	}
+	public void showRowbyRow() {
+		if (mRoot != null)
+			showRowbyRow(mRoot);
+	}
+	public void showRowbyRow(AVLTreeNode<T> node) {
+		AVLTreeNode<T> cur=node;
+		Queue<AVLTreeNode<T>> queue=new LinkedList<>();
+		queue.offer(cur);
+		int size=0;
+		int count=0;
+		while(queue.size()>0)
+		{
+			AVLTreeNode<T> temp=queue.poll();
+			if(temp.left!=null)
+			{
+				queue.offer(temp.left);
+				size++;
+			}
+			if(temp.right!=null)
+			{
+				queue.offer(temp.right);
+				size++;
+			}
+			System.out.print(temp.key+" ");
+			if()
+		}
+	}
+
 }

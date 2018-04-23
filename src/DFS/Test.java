@@ -1,4 +1,4 @@
-package BackTracking;
+package DFS;
 
 import java.awt.Checkbox;
 
